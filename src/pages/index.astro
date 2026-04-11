@@ -1,4 +1,6 @@
 ---
+import { Font } from "astro:assets";
+
 import Layout from "@layouts/layout.astro";
 
 import Cadet from "@components/cadet.astro";
@@ -7,8 +9,6 @@ import ph_1 from "../assets/placeholders/1.jpg";
 import ph_2 from "../assets/placeholders/2.jpg";
 import ph_3 from "../assets/placeholders/3.jpg";
 ---
-
-<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
 
 <Layout title="Portal">
   <div class="bg" style={`background-image: url(${ph_2.src})`} id="bg-2"></div>
@@ -20,7 +20,7 @@ import ph_3 from "../assets/placeholders/3.jpg";
         Portal.to: <Cadet/>
       </div>
       <nav class="flex flex-col w-fit">
-        <a href="#">Blogs</a>
+        <a href="/blogs/additive-chord-voicing">Blogs</a>
         <a href="#" data-bg="bg-2">Burnstone Phantasy</a>
         <a href="#" data-bg="bg-3">Patchwork Skits</a>
       </nav>

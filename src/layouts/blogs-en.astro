@@ -4,6 +4,7 @@ import "@styles/global.css";
 import Cadet from "@components/cadet.astro";
 
 import type { MarkdownLayoutProps } from "astro";
+import { locales } from "astro:schema";
 
 type Props = MarkdownLayoutProps<{
   // Define frontmatter props here
@@ -31,20 +32,28 @@ const date = new Date(Date.parse(frontmatter.date));
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{frontmatter.title}</title>
   </head>
   <body>
     <div class="flex justify-center">
-      <div class="flex flex-col w-5xl py-10 px-1">
+      <div class="flex flex-col w-5xl py-10 px-2">
         <header class="text-4xl font-black font-mono">
-          <i>Title:</i> {frontmatter.title} <Cadet/>
+          <i>Title:</i>
+          {frontmatter.title}
+          <Cadet />
         </header>
         <div class="w-[25em] font-mono text-dimmed border p-[2ch] my-3">
           <p><i>by:</i> {frontmatter.author || "five.limbed.cat"}</p>
           <p><i>at:</i> {date.toISOString()}</p>
-          <p style="margin-inline-start: 2ch;"><i>=</i> {date.toLocaleString()}</p>
+          <p style="margin-inline-start: 2ch;">
+            <i>=</i>
+            {date.toLocaleString(undefined, { dateStyle: "full", timeStyle: "full" })}
+          </p>
         </div>
         <hr />
         <hr />
@@ -55,7 +64,9 @@ const date = new Date(Date.parse(frontmatter.date));
         <hr class="border-4" />
         <hr />
         <hr />
-        <div class="font-mono text-dimmed self-center my-10">- end.of.file <Cadet/></div>
+        <div class="font-mono text-dimmed self-center my-10">
+          - end.of.file <Cadet />
+        </div>
       </div>
     </div>
   </body>
@@ -90,15 +101,15 @@ const date = new Date(Date.parse(frontmatter.date));
     }
 
     h1,
-    h2{
+    h2 {
       font-family: "Playfair Display", serif;
-      font-variant-ligatures: common-ligatures, discretionary-ligatures, contextual;
+      font-variant-ligatures:
+        common-ligatures, discretionary-ligatures, contextual;
       margin-block-start: 3rem;
       margin-block-end: 1rem;
     }
 
-    h1:first-child
-    {
+    h1:first-child {
       margin-block-start: 0;
     }
 

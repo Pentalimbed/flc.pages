@@ -36,16 +36,16 @@ class AnchorPattern {
 }
 const anchor_patterns = [
     new AnchorPattern(0, true, [7], 0, "root-position consonant triads"),
-    new AnchorPattern(1, false, [10], 0, "augmented-sixth chords \& all root-position seventh chords save for major-seventh chords"),
-    new AnchorPattern(2, true, [11], 0, "root-position major-seventh chords"),
+    new AnchorPattern(1, false, [10], 0, "augmented-sixth chords \& all root-position 7th chords, except for major-7th chords"),
+    new AnchorPattern(2, true, [11], 0, "root-position major-7th chords"),
 
     new AnchorPattern(3, true, [3, 8], 8, "first-inversion major triad"),
     new AnchorPattern(3, true, [5, 9], 5, "second-inversion major triad"),
     new AnchorPattern(4, true, [4, 9], 9, "first-inversion minor triad"),
     new AnchorPattern(4, true, [5, 8], 5, "second-inversion minor triad"),
-    new AnchorPattern(5, true, [3, 6], 0, "diminished triads/seventh chords"),
-    new AnchorPattern(5, true, [3, 9], 9, "diminished triads/seventh chords"),
-    new AnchorPattern(5, true, [6, 9], 6, "diminished triads/seventh chords"),
+    new AnchorPattern(5, true, [3, 6], 0, "diminished triads/7th chords"),
+    new AnchorPattern(5, true, [3, 9], 9, "diminished triads/7th chords"),
+    new AnchorPattern(5, true, [6, 9], 6, "diminished triads/7th chords"),
     new AnchorPattern(6, true, [6, 8], 8, "first-inversion domiant 7th"),
     new AnchorPattern(7, true, [3, 5], 5, "second-inversion domiant/minor 7th"),
     new AnchorPattern(6, true, [2, 6], 2, "third-inversion domiant 7th"),
@@ -167,7 +167,7 @@ for (var i = 0; i < n_notes; i++) {
 
     var octave_id = i % 12;
     button.classList.add("piano-key", note_is_white[octave_id] ? "white-key" : "black-key")
-    button.textContent = note_names[octave_id];
+    button.textContent = note_names[octave_id] + " / +" + i;
 
     if (note_selected[i])
         button.classList.add("selected-key");
