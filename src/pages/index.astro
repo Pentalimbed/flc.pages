@@ -1,0 +1,87 @@
+---
+import Layout from "@layouts/layout.astro";
+
+import Cadet from "@components/cadet.astro";
+
+import ph_1 from "../assets/placeholders/1.jpg";
+import ph_2 from "../assets/placeholders/2.jpg";
+import ph_3 from "../assets/placeholders/3.jpg";
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+
+<Layout title="Portal">
+  <div class="bg" style={`background-image: url(${ph_2.src})`} id="bg-2"></div>
+  <div class="bg" style={`background-image: url(${ph_3.src})`} id="bg-3"></div>
+
+  <div class="relative w-full h-full z-1 grid place-items-center">
+    <div class="flex flex-col gap-4 w-fit">
+      <div class="text-6xl font-black">
+        Portal.to: <Cadet/>
+      </div>
+      <nav class="flex flex-col w-fit">
+        <a href="#">Blogs</a>
+        <a href="#" data-bg="bg-2">Burnstone Phantasy</a>
+        <a href="#" data-bg="bg-3">Patchwork Skits</a>
+      </nav>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const items = document.querySelectorAll("[data-bg]");
+
+  items.forEach((item) => {
+    if (item instanceof HTMLElement) {
+      item.addEventListener("mouseenter", () => {
+        // Hide all backgrounds
+        document
+          .querySelectorAll(".bg")
+          .forEach((bg) => bg.classList.remove("active"));
+        // Show the linked one
+        document.getElementById(item.dataset.bg!)!.classList.add("active");
+      });
+
+      item.addEventListener("mouseleave", () => {
+        document
+          .querySelectorAll(".bg")
+          .forEach((bg) => bg.classList.remove("active"));
+      });
+    }
+  });
+</script>
+
+<style>
+  html {
+    color: var(--color-whitish);
+    font-family: "Geist Mono", monospace;
+  }
+
+  .bg {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .bg.active {
+    opacity: 1;
+  }
+
+  nav a {
+    background-color: var(--color-whitish) / 0%;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    font-size: xx-large;
+    font-weight:lighter;
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+  nav a:hover {
+    color: var(--color-blackish);
+    background-color: var(--color-whitish);
+  }
+</style>

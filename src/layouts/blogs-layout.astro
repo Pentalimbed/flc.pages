@@ -1,0 +1,197 @@
+---
+import "@styles/global.css";
+
+import Cadet from "@components/cadet.astro";
+
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+  // Define frontmatter props here
+  title: string;
+  author: string | null;
+  date: string;
+}>;
+
+const { frontmatter, url } = Astro.props;
+const date = new Date(Date.parse(frontmatter.date));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <meta name="generator" content={Astro.generator} />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body>
+    <div class="flex justify-center">
+      <div class="flex flex-col w-5xl py-10 px-1">
+        <header class="text-4xl font-black font-mono">
+          <i>Title:</i> {frontmatter.title} <Cadet/>
+        </header>
+        <div class="w-[25em] font-mono text-dimmed border p-[2ch] my-3">
+          <p><i>by:</i> {frontmatter.author || "five.limbed.cat"}</p>
+          <p><i>at:</i> {date.toISOString()}</p>
+          <p style="margin-inline-start: 2ch;"><i>=</i> {date.toLocaleString()}</p>
+        </div>
+        <hr />
+        <hr />
+        <hr class="border-4" />
+        <main class="markdown-container w-full px-3">
+          <slot />
+        </main>
+        <hr class="border-4" />
+        <hr />
+        <hr />
+        <div class="font-mono text-dimmed self-center my-10">- end.of.file <Cadet/></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    color: var(--color-whitish);
+    background-color: var(--color-blackish);
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  hr {
+    margin-block-start: 0.5rem;
+    margin-block-end: 0.5rem;
+    color: var(--color-dimmed);
+  }
+
+  .markdown-container {
+    font-family: "Newsreader", serif;
+    font-size: 14pt;
+    font-variant-ligatures: common-ligatures, contextual;
+
+    p {
+      margin-block-end: 1rem;
+    }
+
+    h1,
+    h2{
+      font-family: "Playfair Display", serif;
+      font-variant-ligatures: common-ligatures, discretionary-ligatures, contextual;
+      margin-block-start: 3rem;
+      margin-block-end: 1rem;
+    }
+
+    h1:first-child
+    {
+      margin-block-start: 0;
+    }
+
+    h1 {
+      font-size: 32pt;
+      font-weight: bolder;
+    }
+    h2 {
+      font-size: 24pt;
+      font-weight: bolder;
+    }
+
+    img,
+    picture {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.25rem;
+      margin-inline: auto;
+      display: block;
+    }
+
+    ul,
+    ol {
+      display: block;
+      margin-block-start: 1rem;
+      margin-block-end: 1rem;
+      padding-inline-start: 2rem;
+    }
+    ul {
+      list-style-type: square;
+    }
+    ol {
+      list-style-type: decimal;
+    }
+    li {
+      overflow-wrap: anywhere;
+    }
+
+    blockquote {
+      display: block;
+      margin-block: 1rem;
+      padding-inline: 1.25rem 1rem;
+      border-inline-start: 5px solid;
+      border-color: var(--color-whitish);
+
+      font-style: italic;
+    }
+    blockquote footer {
+      margin-top: 0.5em;
+    }
+
+    code,
+    code span,
+    pre {
+      border-radius: 4px;
+      color: var(--color-side-accent);
+      font-family: "Geist Mono", monospace;
+      overflow: auto;
+      max-width: 100%;
+    }
+    code {
+      font-size: var(--variable-font-size);
+    }
+    pre {
+      padding: 0.75rem 1rem;
+      tab-size: 2;
+    }
+
+    table {
+      display: block;
+      max-width: 100%;
+      border-collapse: collapse;
+      border: 2px solid green;
+      border-spacing: 0;
+      margin-inline: auto;
+      overflow: auto;
+    }
+    td {
+      border: 1px solid green;
+      padding: 0.5rem 1rem;
+    }
+    th {
+      border: 1px solid green;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+    }
+    table tbody tr:nth-child(odd) {
+      background-color: grey;
+    }
+
+    hr {
+      border: 0;
+      border-bottom: 1px solid yellow;
+    }
+  }
+</style>
