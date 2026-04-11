@@ -1,0 +1,68 @@
+---
+import Layout from "@layouts/layout.astro";
+
+import Caret from "@components/caret.astro";
+import BlogCard from "@components/blog-card.astro";
+
+// Reads all pages from /blogs/ and renders link buttons for each
+
+// const blogFiles = await Astro.glob('./blogs/*.{astro,md,mdx}');
+const blogFiles = Object.values(
+    import.meta.glob("./blogs/*.{astro,md,mdx}", { eager: true }),
+);
+
+const blogs = blogFiles
+    .map((file) => {
+        // Derive URL path from file URL, e.g. /blogs/my-post
+        const url =
+            file.url ??
+            file.file.replace(/.*\/pages/, "").replace(/\.(astro|md|mdx)$/, "");
+
+        // Pull title from frontmatter (md/mdx) or a named export (astro)
+        const title =
+            file.frontmatter?.title ??
+            file.title ??
+            url.split("/").pop()?.replace(/-/g, " ") ??
+            "Untitled";
+
+        const date =
+            file.frontmatter?.date ?? file.frontmatter?.pubDate ?? null;
+
+        return { url, title, date };
+    })
+    .sort((a, b) => {
+        // Sort newest first if dates available, otherwise alphabetically
+        if (a.date && b.date)
+            return new Date(b.date).getTime() - new Date(a.date).getTime();
+        return a.title.localeCompare(b.title);
+    });
+---
+
+<link
+    href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet"
+/>
+
+<Layout title="Blogs">
+    <div class="flex flex-col font-mono h-screen">
+        <div class="mx-[0.5rem] py-[0.5rem] border-b">
+            <a href="/" class="italic">&lt; back.to.index <Caret /></a>
+        </div>
+        <nav
+            id="card-board"
+            class="flex flex-col flex-wrap content-start h-full w-full overflow-x-auto p-10 gap-[1em]"
+        >
+            {
+                blogs.map((blog) => (
+                    <BlogCard title={blog.title} url={blog.url} />
+                ))
+            }
+        </nav>
+    </div>
+</Layout>
+
+<style>
+    body {
+        overflow-y: hidden;
+    }
+</style>

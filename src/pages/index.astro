@@ -1,14 +1,14 @@
 ---
-import { Font } from "astro:assets";
-
 import Layout from "@layouts/layout.astro";
 
-import Cadet from "@components/cadet.astro";
+import Caret from "@components/caret.astro";
 
 import ph_1 from "../assets/placeholders/1.jpg";
 import ph_2 from "../assets/placeholders/2.jpg";
 import ph_3 from "../assets/placeholders/3.jpg";
 ---
+
+<link href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 
 <Layout title="Portal">
   <div class="bg" style={`background-image: url(${ph_2.src})`} id="bg-2"></div>
@@ -17,10 +17,10 @@ import ph_3 from "../assets/placeholders/3.jpg";
   <div class="relative w-full h-full z-1 grid place-items-center">
     <div class="flex flex-col gap-4 w-fit">
       <div class="text-6xl font-black">
-        Portal.to: <Cadet/>
+        Portal.to: <Caret />
       </div>
-      <nav class="flex flex-col w-fit">
-        <a href="/blogs/additive-chord-voicing">Blogs</a>
+      <nav class="flex flex-col w-fit backdrop-saturate-20">
+        <a href="/blogs">Blogs</a>
         <a href="#" data-bg="bg-2">Burnstone Phantasy</a>
         <a href="#" data-bg="bg-3">Patchwork Skits</a>
       </nav>
@@ -54,7 +54,7 @@ import ph_3 from "../assets/placeholders/3.jpg";
 <style>
   html {
     color: var(--color-whitish);
-    font-family: "Geist Mono", monospace;
+    font-family: "SUSE Mono", monospace;
   }
 
   .bg {
@@ -75,13 +75,15 @@ import ph_3 from "../assets/placeholders/3.jpg";
     padding-left: 0.2em;
     padding-right: 0.2em;
     font-size: xx-large;
-    font-weight:lighter;
+    font-weight: lighter;
     transition:
-      color 0.2s ease,
-      background-color 0.2s ease;
+      color 0.2s ease-out,
+      background-color 0.2s ease-out,
+      font-weight 0.2s ease-out;
   }
   nav a:hover {
     color: var(--color-blackish);
     background-color: var(--color-whitish);
+    font-weight: bold;
   }
 </style>
