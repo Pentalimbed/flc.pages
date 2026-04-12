@@ -40,16 +40,16 @@ const date = new Date(Date.parse(frontmatter.date));
     <title>{frontmatter.title}</title>
   </head>
 
-  <body>
-    <div class="flex justify-center">
-      <div class="flex flex-col w-5xl px-2">
-        <nav class="py-[0.5rem] font-mono border-b mb-5 flex">
-          <a href="/blogs" class="italic">&lt; blogs <Caret /></a>
-          <div class="grow"></div>
-          <div class="flex h-full gap-[0.3dvh]">
-            <LinkStack />
-          </div>
-        </nav>
+  <body class="flex justify-center overflow-hidden w-screen h-screen">
+    <div class="flex flex-col w-5xl px-2">
+      <nav class="py-[0.5rem] font-mono border-b mb-5 flex">
+        <a href="/blogs" class="italic">&lt; blogs <Caret /></a>
+        <div class="grow"></div>
+        <div class="flex h-full gap-[0.3dvh]">
+          <LinkStack />
+        </div>
+      </nav>
+      <div class="flex flex-col overflow-y-auto">
         <div class="flex flex-col font-mono">
           <header id="page-title" class="text-4xl font-black mbe-[1em]">
             <i>Title:</i>
@@ -79,7 +79,7 @@ const date = new Date(Date.parse(frontmatter.date));
 
         <div class="font-mono self-center my-10 text-dimmed">
           end.of.file <a href="#page-title"
-            ><span class="text-whitish animate-blink">↟</span>
+            ><span class="text-whitish animate-blink">^^^</span>
           </a>
         </div>
       </div>
