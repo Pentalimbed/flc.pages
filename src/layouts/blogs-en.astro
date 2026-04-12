@@ -41,11 +41,14 @@ const date = new Date(Date.parse(frontmatter.date));
   </head>
 
   <body class="flex justify-center overflow-hidden w-screen h-screen">
-    <div class="flex flex-col w-5xl px-2">
-      <nav class="py-[0.5rem] font-mono border-b flex">
-        <a href="/blogs" class="italic">&lt; blogs <Caret /></a>
+    <div class="flex flex-col min-w-3xs max-w-5xl px-2">
+      <nav class="flex py-[0.5rem] font-mono border-b">
+        <a href="/blogs" class="italic text-nowrap flex-none">&lt; blogs</a>
+        <div class="flex-none"> &thinsp;|&thinsp;</div>
+        <a href="" class="italic font-bold min-w-0 truncate">{frontmatter.title}</a>
+        <Caret />
         <div class="grow"></div>
-        <div class="flex h-full gap-[0.3dvh]">
+        <div class="flex flex-none h-full gap-[0.3dvh]">
           <LinkStack />
         </div>
       </nav>
