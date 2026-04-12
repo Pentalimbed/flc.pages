@@ -26,14 +26,14 @@ const { title, url, italic, align, weight } = Astro.props;
 <style>
   a div {
     font-weight: var(--rnd-weight);
+    transition:
+      color 0.2s ease-out,
+      background-color 0.2s ease-out,
+      font-weight 0.2s ease-out;
   }
   a div:hover {
     color: var(--color-blackish);
     background-color: var(--color-whitish);
     font-weight: 900;
-    transition:
-      color 0.2s ease-out,
-      background-color 0.2s ease-out,
-      font-weight 0.2s ease-out;
   }
 </style>
