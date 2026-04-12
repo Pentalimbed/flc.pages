@@ -44,10 +44,10 @@ const date = new Date(Date.parse(frontmatter.date));
     <div class="flex justify-center">
       <div class="flex flex-col w-5xl px-2">
         <nav class="py-[0.5rem] font-mono border-b mb-5">
-            <a href="/blogs" class="italic">&lt; blogs <Caret /></a>
+          <a href="/blogs" class="italic">&lt; blogs <Caret /></a>
         </nav>
         <div class="flex flex-col font-mono">
-          <header class="text-4xl font-black mbe-[1em] ">
+          <header class="text-4xl font-black mbe-[1em]">
             <i>Title:</i>
             {frontmatter.title}
           </header>
@@ -150,6 +150,11 @@ const date = new Date(Date.parse(frontmatter.date));
       overflow-wrap: anywhere;
     }
 
+    a {
+      text-decoration: underline;
+      color: dodgerblue;
+    }
+
     blockquote {
       display: block;
       margin-block: 1rem;
@@ -204,7 +209,7 @@ const date = new Date(Date.parse(frontmatter.date));
 
     hr {
       border: 0;
-      border-bottom: 1px solid yellow;
+      border-bottom: 1px solid;
     }
   }
 </style>
