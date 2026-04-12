@@ -23,7 +23,19 @@ const blogs = blogFiles
 
     const date = file.frontmatter?.date ?? file.frontmatter?.pubDate ?? null;
 
-    return { url, title, date };
+    const italic = Math.random() < 0.7 ? "normal" : "italic";
+    const rnd_align = Math.random();
+    const align =
+      rnd_align < 0.7
+        ? rnd_align < 0.5
+          ? rnd_align < 0.3
+            ? "start"
+            : "justify"
+          : "center"
+        : "end";
+    const weight = Math.random() * 500;
+
+    return { url, title, date, italic, align, weight };
   })
   .sort((a, b) => {
     // Sort newest first if dates available, otherwise alphabetically
@@ -47,7 +59,17 @@ const blogs = blogFiles
       id="card-board"
       class="flex flex-col flex-wrap content-start h-full w-full overflow-x-auto p-10 gap-[1em]"
     >
-      {blogs.map((blog) => <BlogCard title={blog.title} url={blog.url} />)}
+      {
+        blogs.map((blog) => (
+          <BlogCard
+            title={blog.title}
+            url={blog.url}
+            italic={blog.italic}
+            align={blog.align}
+            weight={blog.weight.toString()}
+          />
+        ))
+      }
     </nav>
   </div>
 </Layout>

@@ -4,21 +4,13 @@ import "@styles/global.css";
 interface Props {
   title: string;
   url: string;
+
+  italic: string;
+  align: string;
+  weight: string;
 }
 
-const { title, url } = Astro.props;
-
-const italic = Math.random() < 0.7 ? "normal" : "italic";
-const rnd_align = Math.random();
-const align =
-  rnd_align < 0.7
-    ? rnd_align < 0.5
-      ? rnd_align < 0.3
-        ? "start"
-        : "justify"
-      : "center"
-    : "end";
-const weight = Math.random() * 500;
+const { title, url, italic, align, weight } = Astro.props;
 ---
 
 <a href={url} class="w-fit">
