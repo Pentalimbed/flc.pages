@@ -51,7 +51,7 @@ const date = new Date(Date.parse(frontmatter.date));
           </div>
         </nav>
         <div class="flex flex-col font-mono">
-          <header class="text-4xl font-black mbe-[1em]">
+          <header id="page-title" class="text-4xl font-black mbe-[1em]">
             <i>Title:</i>
             {frontmatter.title}
           </header>
@@ -77,8 +77,10 @@ const date = new Date(Date.parse(frontmatter.date));
         <hr class="border-2" />
         <hr />
 
-        <div class="font-mono text-dimmed self-center my-10">
-          - end.of.file <Caret />
+        <div class="font-mono self-center my-10 text-dimmed">
+          end.of.file <a href="#page-title"
+            ><span class="text-whitish animate-blink">↟</span>
+          </a>
         </div>
       </div>
     </div>

@@ -6,6 +6,13 @@
   --color-dimmed: oklch(0.5 0 0);
 
   --font-mono: "SUSE Mono", monospace;
+
+  --animate-blink: blink-animation 1s steps(1, start) infinite;
+  @keyframes blink-animation {
+      50% {
+          visibility: hidden;
+      }
+  }
 }
 
 html.main-misc {
