@@ -56,12 +56,7 @@ const date = new Date(Date.parse(frontmatter.date));
             <p><i>at:</i> {date.toISOString()}</p>
             <p style="margin-inline-start: 2ch;">
               <i>=</i>
-              {
-                date.toLocaleString(undefined, {
-                  dateStyle: "full",
-                  timeStyle: "full",
-                })
-              }
+              <span id="client-datetime" data-date={frontmatter.date}></span>
             </p>
           </div>
         </div>
@@ -85,6 +80,19 @@ const date = new Date(Date.parse(frontmatter.date));
     </div>
   </body>
 </html>
+
+<script>
+  const el = document.getElementById("client-datetime") as HTMLElement;
+  const raw = el.dataset.date;
+
+  if (raw) {
+    const date = new Date(raw);
+    el.textContent = date.toLocaleString(undefined, {
+      dateStyle: "full",
+      timeStyle: "full",
+    });
+  }
+</script>
 
 <style is:global>
   hr {
