@@ -1,0 +1,22 @@
+---
+import Layout from "@layouts/layout.astro";
+import Caret from "@components/caret.astro";
+---
+
+<Layout title="404">
+  <div class="grid place-items-center h-full font-mono text-dimmed">
+    <div class="flex flex-col">
+      <nav class="py-[0.5rem] border-b text-whitish mbe-3">
+        <a href="/" class="italic">&lt; index <Caret /></a>
+      </nav>
+      <p class="text-6xl">ERROR 404</p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  body {
+    width: 100vw;
+    height: 100vh;
+  }
+</style>

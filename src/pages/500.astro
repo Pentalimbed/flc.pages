@@ -1,0 +1,24 @@
+---
+import Layout from "@layouts/layout.astro";
+import Caret from "@components/caret.astro";
+
+interface Props {
+  error: unknown;
+}
+
+const { error } = Astro.props;
+---
+
+<Layout title="500">
+  <div class="grid place-items-center h-full font-mono text-dimmed">
+    <div class="flex flex-col">
+      <nav class="py-[0.5rem] border-b text-whitish mbe-3">
+        <a href="/" class="italic">&lt; index <Caret /></a>
+      </nav>
+      <p class="text-6xl">ERROR 500</p>
+      <p>
+        &gt; {error instanceof Error ? error.message : "Unknown error"}
+      </p>
+    </div>
+  </div>
+</Layout>
