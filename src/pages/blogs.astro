@@ -3,6 +3,7 @@ import Layout from "@layouts/layout.astro";
 
 import Caret from "@components/caret.astro";
 import BlogCard from "@components/blog-card.astro";
+import LinkStack from "@components/link-stack.astro";
 
 const blogFiles = Object.values(
   import.meta.glob("./blogs/*.{astro,md,mdx}", { eager: true }),
@@ -51,13 +52,17 @@ const blogs = blogFiles
 />
 
 <Layout title="Blogs">
-  <div class="flex flex-col font-mono h-screen">
-    <nav class="mx-[0.5rem] py-[0.5rem] border-b">
+  <div class="flex flex-col font-mono md:h-screen">
+    <nav class="mx-[0.5rem] py-[0.5rem] border-b flex">
       <a href="/" class="italic">&lt; index <Caret /></a>
+      <div class="grow"></div>
+      <div class="flex h-full gap-[0.3dvh]">
+        <LinkStack />
+      </div>
     </nav>
     <nav
       id="card-board"
-      class="flex flex-col flex-wrap content-start h-full w-full overflow-x-auto p-10 gap-[1em]"
+      class="flex flex-col md:flex-wrap md:content-start md:h-full w-full md:overflow-x-auto p-10 gap-[1em]"
     >
       {
         blogs.map((blog) => (
@@ -73,9 +78,3 @@ const blogs = blogFiles
     </nav>
   </div>
 </Layout>
-
-<style>
-  body {
-    overflow-y: hidden;
-  }
-</style>

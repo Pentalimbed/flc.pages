@@ -13,9 +13,9 @@ interface Props {
 const { title, url, italic, align, weight } = Astro.props;
 ---
 
-<a href={url} class="w-fit">
+<a href={url}>
   <div
-    class="border border-whitish w-fit max-w-sm p-[0.25em] font-mono text-3xl"
+    class="border border-whitish w-full max-w-sm p-[0.25em] font-mono text-3xl"
     ,
     style={{ fontStyle: italic, textAlign: align, "--rnd-weight": weight }}
   >

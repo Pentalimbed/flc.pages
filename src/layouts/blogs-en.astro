@@ -2,9 +2,9 @@
 import "@styles/global.css";
 
 import Caret from "@components/caret.astro";
+import LinkStack from "@components/link-stack.astro";
 
 import type { MarkdownLayoutProps } from "astro";
-import { locales } from "astro:schema";
 
 type Props = MarkdownLayoutProps<{
   // Define frontmatter props here
@@ -43,8 +43,12 @@ const date = new Date(Date.parse(frontmatter.date));
   <body>
     <div class="flex justify-center">
       <div class="flex flex-col w-5xl px-2">
-        <nav class="py-[0.5rem] font-mono border-b mb-5">
+        <nav class="py-[0.5rem] font-mono border-b mb-5 flex">
           <a href="/blogs" class="italic">&lt; blogs <Caret /></a>
+          <div class="grow"></div>
+          <div class="flex h-full gap-[0.3dvh]">
+            <LinkStack />
+          </div>
         </nav>
         <div class="flex flex-col font-mono">
           <header class="text-4xl font-black mbe-[1em]">
