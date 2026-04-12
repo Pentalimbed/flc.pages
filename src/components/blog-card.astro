@@ -2,8 +2,8 @@
 import "@styles/global.css";
 
 interface Props {
-    title: string;
-    url: string;
+  title: string;
+  url: string;
 }
 
 const { title, url } = Astro.props;
@@ -11,37 +11,37 @@ const { title, url } = Astro.props;
 const italic = Math.random() < 0.7 ? "normal" : "italic";
 const rnd_align = Math.random();
 const align =
-    rnd_align < 0.7
-        ? rnd_align < 0.5
-            ? rnd_align < 0.3
-                ? "start"
-                : "justify"
-            : "center"
-        : "end";
+  rnd_align < 0.7
+    ? rnd_align < 0.5
+      ? rnd_align < 0.3
+        ? "start"
+        : "justify"
+      : "center"
+    : "end";
 const weight = Math.random() * 500;
 ---
 
 <a href={url} class="w-fit">
-    <div
-        class="border border-whitish rounded-sm w-fit max-w-sm p-[0.25em] font-mono text-3xl"
-        ,
-        style={{ fontStyle: italic, textAlign: align, "--rnd-weight": weight }}
-    >
-        {title}
-    </div>
+  <div
+    class="border border-whitish w-fit max-w-sm p-[0.25em] font-mono text-3xl"
+    ,
+    style={{ fontStyle: italic, textAlign: align, "--rnd-weight": weight }}
+  >
+    {title}
+  </div>
 </a>
 
 <style>
-    a div {
-        font-weight: var(--rnd-weight);
-    }
-    a div:hover {
-        color: var(--color-blackish);
-        background-color: var(--color-whitish);
-        font-weight: 900;
-        transition:
-            color 0.2s ease-out,
-            background-color 0.2s ease-out,
-            font-weight 0.2s ease-out;
-    }
+  a div {
+    font-weight: var(--rnd-weight);
+  }
+  a div:hover {
+    color: var(--color-blackish);
+    background-color: var(--color-whitish);
+    font-weight: 900;
+    transition:
+      color 0.2s ease-out,
+      background-color 0.2s ease-out,
+      font-weight 0.2s ease-out;
+  }
 </style>

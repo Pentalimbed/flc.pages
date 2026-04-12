@@ -11,18 +11,20 @@ import ph_3 from "../assets/placeholders/3.jpg";
 <link href="https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 
 <Layout title="Portal">
+  <div class="bg" style={`background-image: url(${ph_1.src})`} id="bg-1"></div>
   <div class="bg" style={`background-image: url(${ph_2.src})`} id="bg-2"></div>
   <div class="bg" style={`background-image: url(${ph_3.src})`} id="bg-3"></div>
 
   <div class="relative w-full h-full z-1 grid place-items-center">
     <div class="flex flex-col gap-4 w-fit">
       <div class="text-6xl font-black">
-        Portal.to: <Caret />
+        Portal &gt;<Caret />
       </div>
       <nav class="flex flex-col w-fit backdrop-saturate-20">
-        <a href="/blogs">Blogs</a>
-        <a href="#" data-bg="bg-2">Burnstone Phantasy</a>
-        <a href="#" data-bg="bg-3">Patchwork Skits</a>
+        <a href="/blogs"><i>Misc.</i> Blogs</a>
+        <a href="#" data-bg="bg-1"><i>Misc.</i> Gallery</a>
+        <a href="#" data-bg="bg-2">Placeholder #2</a>
+        <a href="#" data-bg="bg-3">Placeholder #3</a>
       </nav>
     </div>
   </div>
