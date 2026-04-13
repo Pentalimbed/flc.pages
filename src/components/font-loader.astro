@@ -1,0 +1,12 @@
+---
+import "@styles/global.css";
+
+interface Props {
+  url: string;
+}
+
+const { url } = Astro.props;
+---
+
+<link href={url} onload="this.rel='stylesheet'" rel="preload" as="style" crossorigin />
+<noscript><link rel="stylesheet" href={url} /></noscript>

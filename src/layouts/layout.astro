@@ -1,5 +1,6 @@
 ---
 import "@styles/global.css";
+import BaseFonts from "@components/base-fonts.astro";
 
 interface Props {
   title: string;
@@ -17,6 +18,8 @@ const { title } = Astro.props;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<BaseFonts/>
 	</head>
 	<body>
 		<slot />

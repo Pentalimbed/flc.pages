@@ -19,7 +19,7 @@ const date = new Date(Date.parse(frontmatter.date));
 ---
 
 <!doctype html>
-<html lang="en" class="main-misc">
+<html lang="zh-CN" class="main-misc">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -28,15 +28,15 @@ const date = new Date(Date.parse(frontmatter.date));
     <meta name="generator" content={Astro.generator} />
     <title>{frontmatter.title}</title>
 
-    <BaseFonts/>
+    <BaseFonts />
   </head>
 
   <body class="flex justify-center overflow-hidden w-screen h-screen">
     <div class="flex flex-col w-5xl min-w-3xs max-w-5xl px-2">
       <nav class="flex py-[0.5rem] font-mono border-b">
         <a href="/blogs" class="italic text-nowrap flex-none">&lt; blogs</a>
-        <div class="flex-none"> &thinsp;|&thinsp;</div>
-        <a href="" class="italic font-bold min-w-0 truncate">{frontmatter.title}</a>
+        <div class="flex-none">&thinsp;|&thinsp;</div>
+        <a href="" class="font-bold min-w-0 truncate">{frontmatter.title}</a>
         &thinsp;<Caret />
         <div class="grow"></div>
         <div class="flex flex-none h-full gap-[0.3dvh]">
@@ -46,13 +46,12 @@ const date = new Date(Date.parse(frontmatter.date));
       <div class="flex flex-col overflow-y-auto py-5">
         <div class="flex flex-col font-mono">
           <header id="page-title" class="text-4xl font-black mbe-[1em]">
-            <i>Title:</i>
-            {frontmatter.title}
+            <i>标题：</i>{frontmatter.title}
           </header>
           <div class="w-[25em] text-dimmed border p-[2ch] my-3">
-            <p><i>by:</i> {frontmatter.author || "five.limbed.cat"}</p>
-            <p><i>at:</i> {date.toISOString()}</p>
-            <p style="margin-inline-start: 2ch;">
+            <p>作者：{frontmatter.author || "五脚猫"}</p>
+            <p>时间：{date.toISOString()}</p>
+            <p style="margin-inline-start: 3ch;">
               <i>=</i>
               <span id="client-datetime" data-date={frontmatter.date}></span>
             </p>
@@ -72,7 +71,7 @@ const date = new Date(Date.parse(frontmatter.date));
         <hr />
 
         <div class="font-mono self-center my-10 text-dimmed">
-          end.of.file <a href="#page-title"
+          全・文・终 <a href="#page-title"
             ><span class="text-whitish animate-blink">^^^</span>
           </a>
         </div>
@@ -104,10 +103,29 @@ const date = new Date(Date.parse(frontmatter.date));
   .markdown-container {
     font-family: var(--font-body-serif);
     font-size: 14pt;
+
+    text-align: justify;
+    text-justify: inter-character;
+
+    overflow-wrap: break-word;
+    hanging-punctuation: first allow-end last;
+
+    text-autospace: normal;
+    text-spacing-trim: normal;
+
     font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: lining-nums;
+    font-variant-east-asian: simplified;
+    font-feature-settings:
+      "chws" 1,
+      "vchw" 1;
+
+    quotes: "\300C" "\300D" "\300E" "\300F";
 
     p {
-      margin-block: 0.5rem;
+      line-height: 1.8;
+      text-indent: 2em;
+      margin-block: 0;
     }
 
     h1,
@@ -182,9 +200,35 @@ const date = new Date(Date.parse(frontmatter.date));
       overflow-wrap: anywhere;
     }
 
+    i {
+      font-family: var(--font-zh-kai);
+    }
+
+    i,
+    em,
+    cite {
+      font-style: normal;
+    }
+
+    em,
+    strong {
+      text-emphasis: filled dot;
+      text-emphasis-position: under right;
+    }
+
     a {
       text-decoration: underline;
       color: dodgerblue;
+    }
+
+    ruby {
+    }
+    rt {
+      font-weight: normal;
+      text-justify: auto;
+      ruby-align: space-between;
+      font-size: 50%;
+      line-height: 0;
     }
 
     blockquote {
@@ -194,7 +238,7 @@ const date = new Date(Date.parse(frontmatter.date));
       border-inline-start: 5px solid;
       border-color: var(--color-whitish);
 
-      font-style: italic;
+      font-family: var(--font-zh-kai);
     }
     blockquote footer {
       margin-top: 0.5em;
@@ -208,9 +252,6 @@ const date = new Date(Date.parse(frontmatter.date));
       font-family: "SUSE Mono", monospace;
       overflow: auto;
       max-width: 100%;
-    }
-    code {
-      font-size: var(--variable-font-size);
     }
     pre {
       padding: 0.75rem 1rem;
