@@ -5,10 +5,7 @@
   --color-blackish: oklch(0.2 0 0);
   --color-dimmed: oklch(0.5 0 0);
 
-  --font-mono: "SUSE Mono", "Noto Sans SC", monospace;
-  --font-body-serif: Newsreader, "WenYuan Serif SC VF", serif;
-  --font-zh-kai: "ChillKai", serif;
-  --font-heading-serif: "Playfair Display", "WenYuan Serif SC VF", serif;
+  --font-mono: var(--font-suse-mono), "Noto Sans SC", monospace;
 
   --animate-blink: blink-animation 1s steps(1, start) infinite;
   @keyframes blink-animation {

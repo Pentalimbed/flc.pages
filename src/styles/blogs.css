@@ -1,0 +1,223 @@
+hr {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.5rem;
+  color: var(--color-dimmed);
+}
+
+.markdown-container {
+  font-family: var(--font-newsreader), serif;
+  font-size: 14pt;
+  font-variant-ligatures: common-ligatures contextual;
+
+  p {
+    margin-block: 0.5rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-playfair), serif;
+    font-variant-ligatures:
+      common-ligatures, discretionary-ligatures, contextual;
+    margin-block-start: 1.5rem;
+  }
+
+  h1,
+  h2 {
+    margin-block-start: 3rem;
+    font-weight: bolder;
+  }
+
+  h3,
+  h4 {
+    font-weight: bold;
+  }
+
+  h1:first-child {
+    margin-block-start: 0;
+  }
+
+  h1 {
+    font-size: 45pt;
+  }
+
+  h2 {
+    font-size: 32pt;
+  }
+
+  h3 {
+    font-size: 28pt;
+  }
+
+  h4 {
+    font-size: 24pt;
+  }
+
+  h5 {
+    font-size: 20pt;
+  }
+
+  h6 {
+    font-size: 18pt;
+  }
+
+  img,
+  picture {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    margin-inline: auto;
+    display: block;
+  }
+
+  ul,
+  ol {
+    display: block;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+    padding-inline-start: 2rem;
+  }
+
+  ul {
+    list-style-type: square;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    overflow-wrap: anywhere;
+  }
+
+  a {
+    text-decoration: underline;
+    color: dodgerblue;
+  }
+
+  blockquote {
+    display: block;
+    margin-block: 1rem;
+    padding-inline: 1.25rem 1rem;
+    border-inline-start: 5px solid;
+    border-color: var(--color-whitish);
+
+    font-style: italic;
+  }
+
+  blockquote footer {
+    margin-top: 0.5em;
+  }
+
+  code,
+  code span,
+  pre {
+    border-radius: 4px;
+    color: var(--color-side-accent);
+    font-family: var(--font-mono);
+    overflow: auto;
+    max-width: 100%;
+  }
+
+  pre {
+    padding: 0.75rem 1rem;
+    tab-size: 2;
+  }
+
+  table {
+    display: block;
+    max-width: 100%;
+    border-collapse: collapse;
+    border: 2px solid green;
+    border-spacing: 0;
+    margin-inline: auto;
+    overflow: auto;
+  }
+
+  td {
+    border: 1px solid green;
+    padding: 0.5rem 1rem;
+  }
+
+  th {
+    border: 1px solid green;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+  }
+
+  table tbody tr:nth-child(odd) {
+    background-color: grey;
+  }
+}
+
+.markdown-container:lang(zh-CN) {
+  font-size: 13pt;
+  font-family: var(--font-newsreader), "WenYuan Serif SC VF", serif;
+
+  text-align: justify;
+  text-justify: inter-character;
+
+  overflow-wrap: break-word;
+  hanging-punctuation: first allow-end last;
+
+  text-autospace: normal;
+  text-spacing-trim: normal;
+
+  font-variant-ligatures: common-ligatures contextual;
+  font-variant-numeric: lining-nums;
+  font-variant-east-asian: simplified;
+  font-feature-settings:
+    "chws" 1,
+    "vchw" 1;
+
+  quotes: "「" "」" "『" "』";
+
+  p {
+    line-height: 1.8;
+    text-indent: 2em;
+    margin-block: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-playfair), "WenYuan Serif SC VF", serif;
+  }
+
+  i, blockquote {
+    font-family: "AR PL UKai CN", serif;
+  }
+  
+  i,
+  em,
+  cite,
+  blockquote {
+    font-style: normal;
+  }
+
+  em,
+  strong {
+    text-emphasis: filled dot;
+    text-emphasis-position: under right;
+  }
+
+  a {
+    text-decoration: underline;
+    color: dodgerblue;
+  }
+
+  rt {
+    font-weight: normal;
+    text-justify: auto;
+    ruby-align: space-between;
+    font-size: 50%;
+    line-height: 0;
+
+  }
+}
