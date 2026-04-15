@@ -176,7 +176,7 @@ hr {
   quotes: "「" "」" "『" "』";
 
   p {
-    line-height: 1.8;
+    line-height: 2;
     text-indent: 2em;
     margin-block: 0;
   }
@@ -216,8 +216,6 @@ hr {
     font-weight: normal;
     text-justify: auto;
     ruby-align: space-between;
-    font-size: 50%;
-    line-height: 0;
-
+    font-size: 60%;
   }
 }
