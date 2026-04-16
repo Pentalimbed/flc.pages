@@ -2,7 +2,6 @@
 import Layout from "@layouts/layout.astro";
 
 import Caret from "@components/caret.html";
-import BlogCard from "@components/blog-card.astro";
 import LinkStack from "@components/link-stack.astro";
 
 const blogFiles = Object.values(
@@ -24,19 +23,7 @@ const blogs = blogFiles
 
     const date = file.frontmatter?.date ?? file.frontmatter?.pubDate ?? null;
 
-    const italic = Math.random() < 0.7 ? "normal" : "italic";
-    const rnd_align = Math.random();
-    const align =
-      rnd_align < 0.7
-        ? rnd_align < 0.5
-          ? rnd_align < 0.3
-            ? "start"
-            : "justify"
-          : "center"
-        : "end";
-    const weight = Math.random() * 500;
-
-    return { url, title, date, italic, align, weight };
+    return { url, title, date };
   })
   .sort((a, b) => {
     // Sort newest first if dates available, otherwise alphabetically
@@ -45,6 +32,7 @@ const blogs = blogFiles
     return a.title.localeCompare(b.title);
   });
 ---
+
 <Layout title="Blogs">
   <div class="flex flex-col font-mono h-full">
     <nav class="mx-[0.5rem] py-[0.5rem] border-b flex">
@@ -60,18 +48,42 @@ const blogs = blogFiles
     >
       {
         blogs.map((blog) => (
-          <BlogCard
-            title={blog.title}
-            url={blog.url}
-            italic={blog.italic}
-            align={blog.align}
-            weight={blog.weight.toString()}
-          />
+          <a href={blog.url}>
+            <div class="blog-card border border-whitish w-full max-w-sm p-[0.25em] font-mono text-3xl wrap-break-word">
+              {blog.title}
+            </div>
+          </a>
         ))
       }
     </nav>
   </div>
 </Layout>
+
+<script>
+  function randomizeStyles() {
+    document.querySelectorAll(".blog-card").forEach((card) => {
+      const italic = Math.random() < 0.7 ? "normal" : "italic";
+      const rnd_align = Math.random();
+      const align =
+        rnd_align < 0.7
+          ? rnd_align < 0.5
+            ? rnd_align < 0.3
+              ? "start"
+              : "justify"
+            : "center"
+          : "end";
+      const weight = Math.random() * 500;
+
+      if (card instanceof HTMLElement) {
+        card.style.setProperty('--card-font-style', italic);
+        card.style.setProperty('--card-text-align', align);
+        card.style.setProperty('--card-font-weight', weight.toString());
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", randomizeStyles);
+</script>
 
 <style>
   html,
@@ -82,5 +94,20 @@ const blogs = blogFiles
   body {
     width: 100vw;
     height: 100vh;
+  }
+
+  .blog-card {
+    font-weight: var(--card-font-weight);
+    font-style: var(--card-font-style);
+    text-align: var(--card-text-align);
+    transition:
+      color 0.2s ease-out,
+      background-color 0.2s ease-out,
+      font-weight 0.2s ease-out;
+  }
+  .blog-card:hover {
+    color: var(--color-blackish);
+    background-color: var(--color-whitish);
+    font-weight: 900;
   }
 </style>
