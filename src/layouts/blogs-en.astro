@@ -13,6 +13,7 @@ type Props = MarkdownLayoutProps<{
   title: string;
   author: string | null;
   date: string;
+  license: string;
 }>;
 
 const { frontmatter } = Astro.props;
@@ -57,6 +58,7 @@ const date = new Date(Date.parse(frontmatter.date));
               <i>=</i>
               <span id="client-datetime" data-date={frontmatter.date}></span>
             </p>
+            <p><i>license:</i> {frontmatter.license}</p>
           </div>
         </div>
 

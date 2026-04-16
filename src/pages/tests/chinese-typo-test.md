@@ -2,6 +2,7 @@
 layout: "@layouts/blogs-zh.astro"
 title: "中文排版测试"
 date: 2026-04-13T11:35:22+00:00
+license: CC BY 4.0
 ---
 
 # 这是什么？
