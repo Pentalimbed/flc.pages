@@ -1,0 +1,13 @@
+---
+interface Props {
+  note: string;
+}
+
+const { note } = Astro.props;
+const noteId = `note-${crypto.randomUUID()}`;
+---
+
+<span class="note" tabindex="0" aria-describedby={noteId}>
+  <span class="note-trigger"><slot /></span>
+  <span id={noteId} class="note-popup" role="tooltip">{note}</span>
+</span>

@@ -4,6 +4,11 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 import mdx from "@astrojs/mdx";
+import remarkCenter from "./src/plugins/remark-center.mjs";
+import remarkDirective from "remark-directive";
+import remarkNote from "./src/plugins/remark-note.mjs";
+import remarkTranslationPair from "./src/plugins/remark-translation-pair.mjs";
+import remarkRuby from "remark-ruby";
 
 import cloudflare from "@astrojs/cloudflare";
 
@@ -18,7 +23,17 @@ export default defineConfig({
     defaultLocale: "en",
   },
 
-  integrations: [mdx()],
+  integrations: [
+    mdx({
+      remarkPlugins: [
+        remarkRuby,
+        remarkDirective,
+        remarkCenter,
+        remarkNote,
+        remarkTranslationPair,
+      ],
+    }),
+  ],
   adapter: cloudflare(),
 
   fonts: [{

@@ -9,9 +9,9 @@ import LinkStack from "@components/link-stack.astro";
 import type { MarkdownLayoutProps } from "astro";
 
 type Props = MarkdownLayoutProps<{
-  // Define frontmatter props here
   title: string;
-  author: string | null;
+  author: string;
+  translator?: string | null;
   date: string;
   license: string;
 }>;
@@ -34,7 +34,7 @@ const date = new Date(Date.parse(frontmatter.date));
   </head>
 
   <body class="flex justify-center overflow-hidden w-screen h-screen">
-    <div class="flex flex-col w-5xl min-w-3xs max-w-5xl px-2">
+    <div class="flex flex-col w-full min-w-3xs px-2">
       <nav class="flex py-[0.5rem] font-mono border-b">
         <a href="/blogs" class="italic text-nowrap flex-none">&lt; blogs</a>
         <div class="flex-none">&thinsp;|&thinsp;</div>
@@ -45,17 +45,19 @@ const date = new Date(Date.parse(frontmatter.date));
           <LinkStack />
         </div>
       </nav>
+      
       <div class="flex flex-col overflow-y-auto py-5">
-        <div class="flex flex-col font-mono">
-          <header id="page-title" class="text-4xl font-black mbe-[1em]">
-            <i>标题：</i>{frontmatter.title}
+        <div class="flex flex-col items-center font-mono">
+          <header id="page-title" class="text-4xl font-black">
+            {frontmatter.title}
           </header>
-          <div class="w-[25em] text-dimmed border p-[2ch] my-3">
-            <p>作者：{frontmatter.author || "五脚猫"}</p>
+          <div class="max-w-5xl text-dimmed border p-[2ch] my-3">
+            <p>作者：{frontmatter.author}</p>
+            <p>译者：{frontmatter.translator || "五脚猫"}</p>
             <p>时间：{date.toISOString()}</p>
             <p style="margin-inline-start: 3ch;">
               <i>=</i>
-              <span id="client-datetime" data-date={frontmatter.date}></span>
+              <span id="client-datetime" data-date={date}></span>
             </p>
             <p>许可: {frontmatter.license}</p>
           </div>
@@ -65,7 +67,7 @@ const date = new Date(Date.parse(frontmatter.date));
         <hr class="border-2" />
         <hr class="border-4" />
 
-        <main class="markdown-container w-full px-3 my-10">
+        <main class="w-full">
           <slot />
         </main>
 
@@ -79,6 +81,7 @@ const date = new Date(Date.parse(frontmatter.date));
           </a>
         </div>
       </div>
+
     </div>
   </body>
 </html>

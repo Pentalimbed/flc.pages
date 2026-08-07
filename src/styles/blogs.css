@@ -10,7 +10,13 @@ hr {
   font-variant-ligatures: common-ligatures contextual;
 
   p {
-    margin-block: 0.5rem;
+    margin-block-end: 1rem;
+  }
+
+  header{
+    font-family: var(--font-playfair), serif;
+    font-variant-ligatures:
+      common-ligatures, discretionary-ligatures, contextual;
   }
 
   h1,
@@ -131,25 +137,58 @@ hr {
     display: block;
     max-width: 100%;
     border-collapse: collapse;
-    border: 2px solid green;
     border-spacing: 0;
     margin-inline: auto;
     overflow: auto;
   }
 
   td {
-    border: 1px solid green;
+    border: 1px solid;
+    border-color: var(--color-whitish);
     padding: 0.5rem 1rem;
   }
 
   th {
-    border: 1px solid green;
+    border: 1px solid;
+    border-color: var(--color-whitish);
     padding: 0.75rem 1rem;
     font-weight: 600;
   }
 
-  table tbody tr:nth-child(odd) {
+  /* table tbody tr:nth-child(odd) {
     background-color: grey;
+  } */
+
+  .note {
+    position: relative;
+    cursor: help;
+    color: dodgerblue;
+  }
+
+  .note-popup {
+    position: absolute;
+    z-index: 10;
+    inset-block-end: calc(100% + 0.5rem);
+    inset-inline-start: 50%;
+    width: max-content;
+    max-width: min(24rem, 80vw);
+    padding: 0.5rem 0.75rem;
+    text-indent: 0;
+    text-align: start;
+    color: var(--color-whitish);
+    background: var(--color-blackish);
+    border: 1px solid var(--color-dimmed);
+    box-shadow: 0 0.25rem 0.75rem oklch(0 0 0 / 30%);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 0.25rem);
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+
+  .note:hover .note-popup,
+  .note:focus-visible .note-popup {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 }
 
@@ -217,5 +256,8 @@ hr {
     text-justify: auto;
     ruby-align: space-between;
     font-size: 60%;
+
+    /* position: relative;
+    inset-block-end: 0.1em; */
   }
 }
