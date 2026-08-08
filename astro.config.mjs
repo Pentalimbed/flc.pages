@@ -4,6 +4,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 import mdx from "@astrojs/mdx";
+import remarkGfm from "remark-gfm";
 import remarkCenter from "./src/plugins/remark-center.mjs";
 import remarkDirective from "remark-directive";
 import remarkNote from "./src/plugins/remark-note.mjs";
@@ -27,6 +28,7 @@ export default defineConfig({
     mdx({
       remarkPlugins: [
         remarkRuby,
+        remarkGfm,
         remarkDirective,
         remarkCenter,
         remarkNote,

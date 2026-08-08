@@ -42,7 +42,12 @@ hr {
     font-weight: bold;
   }
 
-  h1:first-child {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6:first-child {
     margin-block-start: 0;
   }
 
@@ -183,6 +188,14 @@ hr {
     pointer-events: none;
     transform: translate(-50%, 0.25rem);
     transition: opacity 120ms ease, transform 120ms ease;
+
+    p,
+    .note-paragraph {
+      display: block;
+      margin-block: 0;
+      text-indent: 0;
+      text-align: start;
+    }
   }
 
   .note:hover .note-popup,
