@@ -4,16 +4,30 @@ hr {
   color: var(--color-dimmed);
 }
 
-.markdown-container {
+/* Base typography for every disciplined post region. */
+.post-content,
+.post-content .note-popup {
   font-family: var(--font-newsreader), serif;
   font-size: 14pt;
+  line-height: 1.5;
+  text-align: start;
+  text-justify: auto;
   font-variant-ligatures: common-ligatures contextual;
+}
 
+/* Shared Markdown elements. */
+.post-content {
   p {
     margin-block-end: 1rem;
   }
 
-  header{
+  header,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-playfair), serif;
     font-variant-ligatures:
       common-ligatures, discretionary-ligatures, contextual;
@@ -25,10 +39,8 @@ hr {
   h4,
   h5,
   h6 {
-    font-family: var(--font-playfair), serif;
-    font-variant-ligatures:
-      common-ligatures, discretionary-ligatures, contextual;
     margin-block-start: 1.5rem;
+    margin-block-end: 0.5rem;
   }
 
   h1,
@@ -51,62 +63,37 @@ hr {
     margin-block-start: 0;
   }
 
-  h1 {
-    font-size: 45pt;
-  }
-
-  h2 {
-    font-size: 32pt;
-  }
-
-  h3 {
-    font-size: 28pt;
-  }
-
-  h4 {
-    font-size: 24pt;
-  }
-
-  h5 {
-    font-size: 20pt;
-  }
-
-  h6 {
-    font-size: 18pt;
-  }
+  h1 { font-size: 45pt; }
+  h2 { font-size: 32pt; }
+  h3 { font-size: 28pt; }
+  h4 { font-size: 24pt; }
+  h5 { font-size: 20pt; }
+  h6 { font-size: 18pt; }
 
   img,
   picture {
+    display: block;
     max-width: 100%;
     height: auto;
-    border-radius: 0.25rem;
     margin-inline: auto;
-    display: block;
+    border-radius: 0.25rem;
   }
 
   ul,
   ol {
     display: block;
-    margin-block-start: 1rem;
-    margin-block-end: 1rem;
+    margin-block: 1rem;
     padding-inline-start: 2rem;
   }
 
-  ul {
-    list-style-type: square;
-  }
+  ul { list-style-type: square; }
+  ol { list-style-type: decimal; }
 
-  ol {
-    list-style-type: decimal;
-  }
-
-  li {
-    overflow-wrap: anywhere;
-  }
+  li { overflow-wrap: anywhere; }
 
   a {
-    text-decoration: underline;
     color: dodgerblue;
+    text-decoration: underline;
   }
 
   blockquote {
@@ -115,22 +102,19 @@ hr {
     padding-inline: 1.25rem 1rem;
     border-inline-start: 5px solid;
     border-color: var(--color-whitish);
-
     font-style: italic;
   }
 
-  blockquote footer {
-    margin-top: 0.5em;
-  }
+  blockquote footer { margin-top: 0.5em; }
 
   code,
   code span,
   pre {
+    max-width: 100%;
+    overflow: auto;
     border-radius: 4px;
     color: var(--color-side-accent);
     font-family: var(--font-mono);
-    overflow: auto;
-    max-width: 100%;
   }
 
   pre {
@@ -141,136 +125,147 @@ hr {
   table {
     display: block;
     max-width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
     margin-inline: auto;
     overflow: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
   }
 
-  td {
-    border: 1px solid;
-    border-color: var(--color-whitish);
-    padding: 0.5rem 1rem;
-  }
-
+  td,
   th {
-    border: 1px solid;
-    border-color: var(--color-whitish);
+    border: 1px solid var(--color-whitish);
+  }
+
+  td { padding: 0.5rem 1rem; }
+  th {
     padding: 0.75rem 1rem;
     font-weight: 600;
   }
-
-  /* table tbody tr:nth-child(odd) {
-    background-color: grey;
-  } */
-
-  .note {
-    position: relative;
-    cursor: help;
-    color: dodgerblue;
-  }
-
-  .note-popup {
-    position: absolute;
-    z-index: 10;
-    inset-block-end: calc(100% + 0.5rem);
-    inset-inline-start: 50%;
-    width: max-content;
-    max-width: min(24rem, 80vw);
-    padding: 0.5rem 0.75rem;
-    text-indent: 0;
-    text-align: start;
-    color: var(--color-whitish);
-    background: var(--color-blackish);
-    border: 1px solid var(--color-dimmed);
-    box-shadow: 0 0.25rem 0.75rem oklch(0 0 0 / 30%);
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, 0.25rem);
-    transition: opacity 120ms ease, transform 120ms ease;
-
-    p,
-    .note-paragraph {
-      display: block;
-      margin-block: 0;
-      text-indent: 0;
-      text-align: start;
-    }
-  }
-
-  .note:hover .note-popup,
-  .note:focus-visible .note-popup {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
 }
 
-.markdown-container:lang(zh-CN) {
-  font-size: 13pt;
-  font-family: var(--font-newsreader), "WenYuan Serif SC VF", serif;
+/* Inline note trigger and viewport-constrained popup. */
+.post-content .note {
+  position: relative;
+  cursor: help;
+  color: dodgerblue;
+}
 
+.post-content .note-popup {
+  position: fixed;
+  z-index: 1000;
+  inset: 0 auto auto 0;
+  width: max-content;
+  max-width: min(
+    24rem,
+    calc(100vw - 2rem),
+    var(--note-popup-max-width, calc(100vw - 2rem))
+  );
+  max-height: var(--note-popup-max-height, calc(100vh - 2rem));
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem;
+  text-indent: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  color: var(--color-whitish);
+  background: var(--color-blackish);
+  border: 1px solid var(--color-dimmed);
+  box-shadow: 0 0.25rem 0.75rem oklch(0 0 0 / 30%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 120ms ease, visibility 0s linear 120ms;
+}
+
+.post-content .note-popup :is(p, .note-paragraph) {
+  display: block;
+  margin-block: 0;
+  text-indent: 0;
+}
+
+.post-content .note-table {
+  display: table;
+  margin-block-start: 0.5rem;
+  border-collapse: collapse;
+}
+
+.post-content .note-table-row {
+  display: table-row;
+}
+
+.post-content .note-table-cell {
+  display: table-cell;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-whitish);
+}
+
+.post-content .note-table-cell[role="columnheader"] {
+  font-weight: 600;
+}
+
+.post-content .note-popup:lang(en) {
+  quotes: auto;
+}
+
+.post-content .note:hover .note-popup,
+.post-content .note:focus-visible .note-popup {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+/* Chinese post typesetting. */
+:is(.post-content, .post-content .note-popup):lang(zh-CN) {
+  font-family: var(--font-newsreader), "WenYuan Serif SC VF", serif;
+  font-size: 13pt;
   text-align: justify;
   text-justify: inter-character;
-
-  overflow-wrap: break-word;
-  hanging-punctuation: first allow-end last;
-
-  text-autospace: normal;
-  text-spacing-trim: normal;
-
-  font-variant-ligatures: common-ligatures contextual;
   font-variant-numeric: lining-nums;
   font-variant-east-asian: simplified;
-  font-feature-settings:
-    "chws" 1,
-    "vchw" 1;
-
+  font-feature-settings: "chws" 1, "vchw" 1;
+  overflow-wrap: break-word;
+  hanging-punctuation: first allow-end last;
+  text-autospace: normal;
+  text-spacing-trim: normal;
   quotes: "「" "」" "『" "』";
+}
 
-  p {
-    line-height: 2;
-    text-indent: 2em;
-    margin-block: 0;
-  }
+.post-content p:lang(zh-CN) {
+  line-height: 2;
+  text-indent: 2em;
+  margin-block: 0;
+}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-playfair), "WenYuan Serif SC VF", serif;
-  }
+.post-content :is(h1, h2, h3, h4, h5, h6):lang(zh-CN) {
+  font-family: var(--font-playfair), "WenYuan Serif SC VF", serif;
+}
 
-  i, blockquote {
-    font-family: "AR PL UKai CN", serif;
-  }
-  
-  i,
-  em,
-  cite,
-  blockquote {
-    font-style: normal;
-  }
+.post-content :is(i, blockquote):lang(zh-CN) {
+  font-family: "AR PL UKai CN", serif;
+}
 
-  em,
-  strong {
-    text-emphasis: filled dot;
-    text-emphasis-position: under right;
-  }
+.post-content :is(i, em, cite, blockquote, q):lang(zh-CN) {
+  font-style: normal;
+}
 
-  a {
-    text-decoration: underline;
-    color: dodgerblue;
-  }
+.post-content :is(em, strong):lang(zh-CN) {
+  text-emphasis: filled dot;
+  text-emphasis-position: under right;
+}
 
-  rt {
-    font-weight: normal;
-    text-justify: auto;
-    ruby-align: space-between;
-    font-size: 60%;
+.post-content a:lang(zh-CN) {
+  color: dodgerblue;
+  text-decoration: underline;
+}
 
-    /* position: relative;
-    inset-block-end: 0.1em; */
-  }
+.post-content rt:lang(zh-CN) {
+  font-weight: normal;
+  text-justify: auto;
+  ruby-align: space-between;
+  font-size: 60%;
+}
+
+/* Popup paragraphs should remain flush-left even in Chinese post regions. */
+.post-content .note-popup :is(p, .note-paragraph) {
+  text-indent: 0;
 }

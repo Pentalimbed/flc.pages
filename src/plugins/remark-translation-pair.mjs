@@ -7,6 +7,10 @@ export default function remarkTranslationPair() {
 
       node.type = "mdxJsxFlowElement";
       node.name = "TrBox";
+      const languages = {
+        original: "en",
+        translation: "zh-CN",
+      };
       node.attributes = [];
       node.children = node.children.map((child) => {
         if (
@@ -16,6 +20,13 @@ export default function remarkTranslationPair() {
           return child;
         }
 
+        const language = child.attributes?.lang || languages[child.name];
+        node.attributes.push({
+          type: "mdxJsxAttribute",
+          name: `${child.name}Lang`,
+          value: language,
+        });
+
         return {
           type: "mdxJsxFlowElement",
           name: "div",
@@ -24,6 +35,11 @@ export default function remarkTranslationPair() {
               type: "mdxJsxAttribute",
               name: "slot",
               value: child.name,
+            },
+            {
+              type: "mdxJsxAttribute",
+              name: "lang",
+              value: language,
             },
           ],
           children: child.children,

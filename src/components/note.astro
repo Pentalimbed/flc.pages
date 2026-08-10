@@ -8,3 +8,111 @@ const noteId = popupId ?? `note-${crypto.randomUUID()}`;
 ---
 
 <span class="note" tabindex="0" aria-describedby={noteId}><slot /></span>
+
+<script>
+  const popupGutter = 8;
+  const pointerOffset = 12;
+  let activeNote: HTMLElement | null = null;
+  let pointerX = 0;
+  let pointerY = 0;
+  let positionFrame = 0;
+
+  function positionNotePopup(note: HTMLElement, anchorX: number, anchorY: number) {
+    const popup = note.querySelector<HTMLElement>(":scope > .note-popup");
+    const boundary =
+      note.closest<HTMLElement>(".post-content") ??
+      note.closest<HTMLElement>("main");
+
+    if (!popup || !boundary) return;
+
+    const boundaryRect = boundary.getBoundingClientRect();
+    const minimumLeft = Math.max(popupGutter, boundaryRect.left + popupGutter);
+    const maximumRight = Math.min(
+      window.innerWidth - popupGutter,
+      boundaryRect.right - popupGutter,
+    );
+    const minimumTop = Math.max(popupGutter, boundaryRect.top + popupGutter);
+    const maximumBottom = Math.min(
+      window.innerHeight - popupGutter,
+      boundaryRect.bottom - popupGutter,
+    );
+    const availableWidth = Math.max(0, maximumRight - minimumLeft);
+    const availableHeight = Math.max(0, maximumBottom - minimumTop);
+
+    if (availableWidth === 0 || availableHeight === 0) return;
+
+    popup.style.setProperty("--note-popup-max-width", `${availableWidth}px`);
+    popup.style.setProperty("--note-popup-max-height", `${availableHeight}px`);
+
+    const popupRect = popup.getBoundingClientRect();
+    let left = anchorX + pointerOffset;
+    let top = anchorY - pointerOffset - popupRect.height;
+
+    if (left + popupRect.width > maximumRight) {
+      left = anchorX - pointerOffset - popupRect.width;
+    }
+
+    if (top < minimumTop) {
+      top = anchorY + pointerOffset;
+    }
+
+    left = Math.min(Math.max(left, minimumLeft), maximumRight - popupRect.width);
+    top = Math.min(Math.max(top, minimumTop), maximumBottom - popupRect.height);
+
+    popup.style.left = `${left}px`;
+    popup.style.top = `${top}px`;
+  }
+
+  function queuePointerPosition() {
+    if (positionFrame) return;
+
+    positionFrame = window.requestAnimationFrame(() => {
+      positionFrame = 0;
+      if (activeNote?.matches(":hover")) {
+        positionNotePopup(activeNote, pointerX, pointerY);
+      }
+    });
+  }
+
+  document.addEventListener("pointermove", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const note = target.closest<HTMLElement>(".note");
+    if (!note) return;
+
+    activeNote = note;
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    queuePointerPosition();
+  }, { passive: true });
+
+  document.addEventListener("pointerout", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const note = target.closest<HTMLElement>(".note");
+    if (note === activeNote && !note.matches(":hover")) activeNote = null;
+  });
+
+  document.addEventListener("focusin", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const note = target.closest<HTMLElement>(".note");
+    if (!note) return;
+
+    const noteRect = note.getBoundingClientRect();
+    positionNotePopup(
+      note,
+      noteRect.left + noteRect.width / 2,
+      noteRect.top + noteRect.height / 2,
+    );
+  });
+
+  window.addEventListener("resize", queuePointerPosition);
+  document.addEventListener("scroll", queuePointerPosition, {
+    capture: true,
+    passive: true,
+  });
+</script>

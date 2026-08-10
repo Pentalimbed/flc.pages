@@ -13,6 +13,8 @@ import remarkRuby from "remark-ruby";
 
 import cloudflare from "@astrojs/cloudflare";
 
+const isBuild = process.argv[2] === "build";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -36,7 +38,7 @@ export default defineConfig({
       ],
     }),
   ],
-  adapter: cloudflare(),
+  adapter: isBuild ? cloudflare() : undefined,
 
   fonts: [{
     provider: fontProviders.local(),
