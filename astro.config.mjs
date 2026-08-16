@@ -9,7 +9,7 @@ import remarkCenter from "./src/plugins/remark-center.mjs";
 import remarkDirective from "remark-directive";
 import remarkNote from "./src/plugins/remark-note.mjs";
 import remarkTranslationPair from "./src/plugins/remark-translation-pair.mjs";
-import remarkRuby from "remark-ruby";
+import remarkRuby from "./src/plugins/remark-ruby.mjs";
 
 import cloudflare from "@astrojs/cloudflare";
 
@@ -29,9 +29,9 @@ export default defineConfig({
   integrations: [
     mdx({
       remarkPlugins: [
-        remarkRuby,
         remarkGfm,
         remarkDirective,
+        remarkRuby,
         remarkCenter,
         remarkNote,
         remarkTranslationPair,
