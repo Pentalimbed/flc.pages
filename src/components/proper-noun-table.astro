@@ -1,0 +1,99 @@
+---
+interface Props {
+  csv: string;
+}
+
+const { csv } = Astro.props;
+
+function parseCsv(value: string) {
+  return value
+    .trim()
+    .split(/\r?\n/)
+    .slice(1)
+    .map((line) => line.split(";"))
+    .filter(([original]) => original);
+}
+
+const entries = parseCsv(csv);
+---
+
+<div class="proper-noun-table-container">
+  <table class="proper-noun-table">
+    <thead>
+      {[0, 1, 2, 3].map((index) => (
+        <tr aria-hidden={index > 0 ? "true" : undefined}>
+          <th scope={index === 0 ? "col" : undefined}>原文</th>
+          <th scope={index === 0 ? "col" : undefined}>译文</th>
+        </tr>
+      ))}
+    </thead>
+    <tbody>
+      {entries.map(([original, translation]) => (
+        <tr>
+          <td>{original}</td>
+          <td>{translation}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .proper-noun-table-container {
+    container-type: inline-size;
+    width: 100%;
+  }
+
+  .proper-noun-table {
+    --column-count: 1;
+    width: 100%;
+  }
+
+  .proper-noun-table :is(thead, tbody) {
+    display: grid;
+    grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+  }
+
+  .proper-noun-table tr {
+    display: grid;
+    grid-template-columns: minmax(max-content, 1fr) minmax(0, 1fr);
+  }
+
+  .proper-noun-table thead tr {
+    display: none;
+  }
+
+  .proper-noun-table thead tr:first-child {
+    display: grid;
+  }
+
+  @container (min-width: 40rem) {
+    .proper-noun-table {
+      --column-count: 2;
+    }
+
+    .proper-noun-table thead tr:nth-child(2) {
+      display: grid;
+    }
+  }
+
+  @container (min-width: 60rem) {
+    .proper-noun-table {
+      --column-count: 3;
+    }
+
+    .proper-noun-table thead tr:nth-child(3) {
+      display: grid;
+    }
+  }
+
+  @container (min-width: 80rem) {
+    .proper-noun-table {
+      --column-count: 4;
+    }
+
+    .proper-noun-table thead tr:nth-child(4) {
+      display: grid;
+    }
+  }
+</style>

@@ -8,6 +8,7 @@ license: "CC PDM 1.0"
 
 import TrBox from "@components/translation-pair.astro";
 import Note from "@components/note.astro";
+import ProperNounTable from "@components/proper-noun-table.astro";
 import mountainGenealogy from "@assets/blogs/road-to-hel/mountain-genealogy.png";
 import vigaGlumGenealogy from "@assets/blogs/road-to-hel/viga-glum-genealogy.png";
 import egilsGenealogy from "@assets/blogs/road-to-hel/egils-genealogy.png";
@@ -248,61 +249,9 @@ Staff for the courtesy and efficiency they have shown throughout.
 
 <header class="my-[1ch] text-2xl">译名对照表</header>
 
-| 原文 | 译文 |
-| --- | --- |
-| Aldeburgh | 奥尔德堡 |
-| Alfred | 阿尔弗雷德 |
-| Almgren | 阿尔姆格伦 |
-| Alsike | 阿尔西克 |
-| Bornholm | 博恩荷姆 |
-| Billerbeck | 比勒贝克 |
-| Björn | 比约恩 |
-| Björkö | 比约克岛 |
-| Brandenburg | 勃兰登堡 |
-| Brøgger | 布勒格 |
-| Deben | 德本 |
-| Engelstad | 恩格尔斯塔德 |
-| Farmanns | 法尔曼斯 |
-| Fornaldar Sögur | 《古代萨迦》 |
-| Fyen | 菲恩 |
-| Gokstad | 戈克斯塔德 |
-| Gotland | 哥特兰 |
-| Harald the Fairhaired | 金发哈拉尔 |
-| the Hebrides | 赫布里底群岛 |
-| the Isle of Man | 马恩岛 |
-| Jellinge | 耶灵 |
-| Jylland | 日德兰 |
-| La Tène | 拉坦诺 |
-| Ladby | 拉德比 |
-| Lindqvist | 林德奎斯特 |
-| Merovingian | 墨洛温王朝 |
-| Montelius | 蒙特留斯 |
-| Odense | 奥登塞 |
-| Othin | 奥丁 |
-| Olaf of Geirstaðr | 盖尔斯塔德的奥拉夫 |
-| Olaf Tryggvason | 奥拉夫·特里格瓦松 |
-| Óláf, Olaf the Holy | 圣奥拉夫 |
-| Öland | 厄兰 |
-| the Orkneys | 奥克尼群岛 |
-| Oseberg | 奥塞伯格 |
-| Poetic Edda | 《诗体埃达》 |
-| Pomerania | 波美拉尼亚 |
-| Prose Edda | 《散文埃达》 |
-| Seddin | 赛丁 |
-| Shetelig | 谢特利格 |
-| Skåne | 斯堪尼 |
-| Snape | 斯内普 |
-| Snorri Sturlason | 斯诺里·斯图拉松 |
-| Suffolk | 萨福克郡 |
-| Sutton Hoo | 萨顿胡 |
-| Thuizy | 图伊齐 |
-| Tuna | 图纳 |
-| Uppsala | 乌普萨拉 |
-| Vendel | 文德尔 |
-| Vemmerlöv | 韦默洛夫 |
-| Vestfold | 韦斯特福尔德 |
-| Woodbridge | 伍德布里奇 |
-| Ynglinga Saga | 《英格林萨迦》 |
+import properNounsCsv from "@data/road-to-hel-proper-nouns.csv?raw";
+
+<ProperNounTable csv={properNounsCsv} />
 :::
 ::::
 :::::
@@ -1332,7 +1281,6 @@ The grave-goods were found lying on the floor of the chamber, though possibly so
 ::::original{lang=en}
 
 The most important of the grave-goods and all the personal equipment were placed at the west end of the burial chamber. At the east end were the cauldrons and various household vessels, while objects like the dishes and the horns lay between the two. The body might have been expected to lie at the west end of the chamber, but absolutely no trace of human remains of any kind were discovered, and there were no signs of burned bones or of any vessel that could have held cremated remains; nor did the position of the buckles, helmet and so on give the impression that they might have been placed on a dead man. It is not the first time that a grave has been found mysteriously empty; a number of the Vendel graves contained no human remains, and none were found in the Danish ship burial at Fyen or in the ship excavated at Snape Common.[^23-1|\*] However, in these cases either the grave had been entered by robbers or else was in such a poor condition that no definite conclusions could be reached as to whether the body had been there or not. The grave at Sutton Hoo, however, had never been entered from the time when it was closed at the funeral, and the archaeologists who examined it are confident that human remains could not have disappeared without leaving some trace. It has been suggested that the mound may have been erected as a cenotaph, in memory of a king who was lost at sea; and perhaps in view of the other graves left mysteriously without an occupant there may be more Scandinavian examples of the same practice than have been previously recognised. Certainly one definite example is recorded from the Farmanns barrow in Norway, probably erected as a monument for one or more members of the Vestfold royal family to which King Harald the Fair-haired belonged. Brøgger, in his account of the grave, mentions other examples of howes in Scandinavia in which no human remains have been found.[^23-2|\*] Among the graves from the Christian period excavated in the Viking settlement in Greenland one was found to contain a stick carved in runes, which appears to have been buried to represent the dead person, whose body had been lost at sea.[^23-3|\*]
-
 Mr. Phillips has pointed out that another example of an elaborate burial from Saxon times, the Broomfield grave, seems from the records to have been empty of human remains, since the carbon and soot then thought to indicate a possible cremation are more likely to be traces of decayed woodwork. Another very puzzling feature of the Sutton Hoo burial was the basin of rough clay which seems to have been placed above the roof of the burial chamber, and which it is suggested may have been intended for libations.
 
 The evidence of the finds dates the grave in the early part of the seventh century. The numismatists are disposed from the evidence of the coins to select a date about the middle of the century, or at any rate after 630. But such late dating is most improbable, since we know that by 640 Christianity was well established in East Anglia, and a burial such as this would necessitate a reversion to heathen customs for which we have no evidence. If a date between 600 and 640 is accepted, it seems probable that the cenotaph, if cenotaph it is, is that of Redwald, who ruled East Anglia from about 593 to 617, and was the only one of its kings to hold the title of High King of Britain, which belonged to him for some years before he died. This is Chadwick's suggestion,[^24-1|\*] supported by Bede's picture of the king as a man who never wholly gave up his heathen beliefs, and by the probability that Rendlesham, only four miles from this group of barrows, was Redwald's palace. It seems likely that a king with well-known tendencies towards the old faith, and who moreover was survived by a wife who supported it with enthusiasm, was the person in whose honour the barrow was raised; and this is rendered more probable by the fact that at the end of his reign he must have been the richest king in England.[^24-2|\*]
@@ -1351,17 +1299,37 @@ The barrows at Sutton Hoo, two of which have proved to be ship-graves, evidently
 最重要的陪葬品及所有个人装备被放置在墓室西端，东端放有大釜和各类生活器皿，而盘子和角杯等物品则位于两者之间。
 按理说，遗体应安放在墓室西端，但现场完全未发现任何人类遗骸的踪迹⸺既无焚烧过的骨骼，也无盛放火化遗骸的容器。
 此外，带扣、头盔等物品的位置也不像是曾穿戴在死者身上的样子。
-这并非首次发现神秘空置的墓葬；文德尔墓群中许多也未发现人类遗骸，丹麦菲恩岛和斯内普公地发掘出的船葬遗迹中也同样未见遗骸[^23-1|\*]。
+这并非首次发现神秘空置的墓葬；文德尔墓群中许多也未发现人类遗骸，丹麦菲恩岛和斯内普公地发掘出的船葬遗迹中也同样未见遗骸[^23-1cn|\*]。
 然而，上述案例中，墓葬要么曾遭盗墓者洗劫，要么保存状况极差，从而无法确切判断其中是否曾安放过遗体。
 相比之下，萨顿胡的这座墓葬自封墓以来从未开启过。
 负责勘查的考古学家确信，若曾有遗体存在，绝不可能完全消失而不留任何痕迹。
 有人推测，这座土丘可能是一座衣冠冢，以纪念一位在海上遇难的国王；
 鉴于还有其他墓葬也呈现出这种神秘空置的状态，此类习俗在斯堪的纳维亚或许比此前认知的更为普遍。
 挪威<u>法尔曼斯</u>古冢便是一个确凿的例子，它很可能是为纪念金发王哈拉尔所属的韦斯特福尔德王室的一位或多位成员而建的纪念碑。
-布勒格在描述该墓葬时，还列举了斯堪的纳维亚地区其他未发现人类遗骸的古冢案例[^23-2|\*]。
-在格陵兰维京人聚落发掘出的基督教时期墓葬中，有一座墓内仅埋有一根刻有卢恩字母的木棍。
+<u>布勒格</u>在描述该墓葬时，还列举了斯堪的纳维亚地区其他未发现人类遗骸的古冢案例[^23-2|\*]。
+在格陵兰维京人聚落发掘出的基督教时期墓葬中，有一座墓内仅埋有一根刻有卢恩字母的木棍；
 这根木棍似乎是当作死者的象征埋葬的，而死者本人的遗体则已流落海中[^23-3|\*]。
+菲利普斯先生还指出<u>布鲁姆菲尔德</u>墓，这一撒克逊时期的精美墓葬从记录上看似乎也空无一人；因为当时被认为是火葬迹象的碳和烟灰，更有可能是腐朽木制品的痕迹。
+萨顿胡墓葬的另一个令人费解的特征是，墓室顶部似乎放置了一个粗糙的黏土盆，一说这是用来举行祭祀仪式的。
 
+出土文物表明萨顿胡墓葬的年代可追溯至七世纪早期。
+根据钱币的证据，钱币学家倾向于定代七世纪中期，或者至少在公元630年之后。
+但如此晚的年代极不可能，因为众所周知，到公元640年，基督教已经在<u>东盎格利亚</u>地区广泛传播，而像这样的墓葬意味着当时人们重新回归了异教习俗，而我们没有任何证据可以佐证。
+如果定在公元600年至640年间，那么这座衣冠冢（如果它确实是衣冠冢的话）很可能属于<u>雷德沃尔德</u>。
+雷德沃尔德自大约公元593年至617年间统治东盎格利亚，是东盎格利亚国王中唯一一位拥有<q>不列颠至高王</q>称号的君主，是他去世前几年前获得的。
+以上是查德威克的观点[^24-1|\*]，与之相佐证，<u>比德</u>也描述这位国王从未完全放弃异教信仰；而距离墓冢仅四英里的<u>伦德尔沙姆</u>很可能是雷德沃尔德的宫殿。
+一位众所周知虔信古老信仰的国王，其遗孀也热情地支持他的信仰，那这座豪华墓冢很可能就是为了纪念他而建造的。
+而雷德沃尔德统治末期也必然是英格兰最富有的国王，这更增加了这种可能性[^24-2|\*]。
+
+萨顿胡的墓丘，其中两座已被证实为船葬，其所在的墓地显然可以追溯至异教时期，而其中最主要的墓穴奇迹般地保持完好。
+对其余墓丘的挖掘或许能为宝藏的年代提供更多线索，但毫无疑问，我们已有盎格鲁-撒克逊时期东盎格利亚王国一处精美船葬的实例，其年代接近瑞典文德尔墓群。
+此外，在船体上方建造墓室的做法，可以与维京时期的船葬、甚至乌普萨拉墓丘中的墓室遗迹相呼应。
+斯内普另一处船葬遗址的墓丘表明，沿东盎格利亚海岸稍远的地方可能存在第二处墓地。
+假如这一处墓葬年代确实更早，那么不列颠群岛船葬的出现时间，不会晚于迄今为止发现的任何斯堪的纳维亚船葬。
+谢特利格强调英格兰与斯堪的纳维亚之间密切的文化联系，而萨顿胡宝藏的发现也印证了这一点。
+随着进一步修复和研究，萨顿胡宝藏与文德尔出土文物之间的相似之处或将越发明晰。
+
+[^23-1cn]: 此前被认为是人类毛发的物质或许是动物毛皮 (<span lang="en-GB">Phillips, *Antiquity, op. cit.* p. 6</span>).
 ::::
 :::::
 
@@ -1370,7 +1338,7 @@ The barrows at Sutton Hoo, two of which have proved to be ship-graves, evidently
 
 Our evidence for ship-funeral then may be briefly summed up as follows: We find in the North graves made in the shape of ships at the beginning of the Iron Age; then a long gap while cremation graves and later inhumation graves after the Roman fashion were the rule; and then, by the seventh century for certain and possibly in both cremation and inhumation graves for a century or more earlier, ship-funeral on an elaborate scale practised in Scandinavia and Anglo-Saxon England. This wide gap in time is puzzling, and even more so is the isolation of the ship-form graves in Gotland and the other side of the Baltic in the early Iron Age. Their isolation is not however so complete if we turn from grave forms alone to the ship as a symbol, and to what we know of religion in the Bronze Age in Northern Europe.
 
-Our knowledge of it is based mainly on the pictures and symbols left by its people on the great walls of rock in the mountainous districts of Scandinavia. These drawings are not naturalistic sketches of animals and hunting scenes like those from the caves of the Paleolithic period, but consist of symbolic figures and groups, recurring many times both on the same rock face and in widely separated regions, depicted geometrically and conventionally though often they are spirited and graphic enough. The favourite figures employed are wheels, soles of feet, snakes, ploughs, axes and ships, while human figures are combined with all these to form processions, marriage groups and battle-scenes, or else are shown dancing, leaping, riding or fighting. There has been much discussion as to the purpose of these figures on the rocks. It is now generally accepted that their significance is a religious and ritual one, and convincing arguments have been put forward by Almgren[^25-1|\*] to the effect that they depict actual ceremonies, supported by evidence from art and ritual in other parts of the world amid periods of civilisation. Traces of ritual fires and slain animals found near the rock-engravings in Sweden help to confirm this. It seems clear that the pictures are based on a fertility religion connected with the worship of the sun, and possibly including, as Almgren believes, the conception of rebirth; such ideas, arising in the East, can he seen fully developed ill the art and religion of Egypt, and seem to have travelled northward to reach Scandinavia during the Bronze Age. In this ritual the ship evidently played an important part, for it is shown continually, sometimes together with wheels and sun-discs, trees, snakes, horned animals, or men dancing, leaping or worshipping; the human figures are sometimes in the ship itself, sometimes forming a group with it, and occasionally seem to be carrying it in their hands.
+Our knowledge of it is based mainly on the pictures and symbols left by its people on the great walls of rock in the mountainous districts of Scandinavia. These drawings are not naturalistic sketches of animals and hunting scenes like those from the caves of the Paleolithic period, but consist of symbolic figures and groups, recurring many times both on the same rock face and in widely separated regions, depicted geometrically and conventionally though often they are spirited and graphic enough. The favourite figures employed are wheels, soles of feet, snakes, ploughs, axes and ships, while human figures are combined with all these to form processions, marriage groups and battle-scenes, or else are shown dancing, leaping, riding or fighting. There has been much discussion as to the purpose of these figures on the rocks. It is now generally accepted that their significance is a religious and ritual one, and convincing arguments have been put forward by Almgren[^25-1|\*] to the effect that they depict actual ceremonies, supported by evidence from art and ritual in other parts of the world amid periods of civilisation. Traces of ritual fires and slain animals found near the rock-engravings in Sweden help to confirm this. It seems clear that the pictures are based on a fertility religion connected with the worship of the sun, and possibly including, as Almgren believes, the conception of rebirth; such ideas, arising in the East, can be seen fully developed in the art and religion of Egypt, and seem to have travelled northward to reach Scandinavia during the Bronze Age. In this ritual the ship evidently played an important part, for it is shown continually, sometimes together with wheels and sun-discs, trees, snakes, horned animals, or men dancing, leaping or worshipping; the human figures are sometimes in the ship itself, sometimes forming a group with it, and occasionally seem to be carrying it in their hands.
 
 Certain of the symbols found on the rock, and the ship among them, are found also on the walls of tombs, on gravestones, and in the neighbourhood of graves; and the ship and the axe in particular are found in Central Europe confined to graves alone. There has been much controversy as to whether an early cult of the dead, connected with sun-worship and with beliefs about fertility, developed until it became primarily a religion of the living away from the grave; or whether the earliest cult was one of fertility and sun-worship and later came to include beliefs and practices connected with the dead, passing on from the principle of rebirth in the world of nature to that of man after death. Almgren[^26-1|\*] supports the second view; he admits that the close connection of certain symbols with graves is evidence in the other direction, but proves on the other hand that rock-engravings in Sweden are not, as some have claimed, found oniy in the neighbourhood of burial places. The evidence is insufficient for definite conclusions to be established, but certainly the development of sun-worship in Egypt, where fuller records of it have been left than anywhere else in the world, is a good argument on Almgren's side.
 
@@ -1380,6 +1348,32 @@ Certain of the symbols found on the rock, and the ship among them, are found als
 ::::
 ::::translation{lang=zh-CN}
 
+总的来说，我们关于船葬的证据可以简要概括如下：
+铁器时代早期，北欧出现了船形状的墓葬；
+之后一段较长的空白期，火葬墓和后来的罗马式土葬墓成为主流；
+接着，六世纪或更早、确定不晚于七世纪的时候，在斯堪的纳维亚和盎格鲁-撒克逊英格兰，火葬墓和土葬墓中都出现大规模的船葬习俗。
+其中这段漫长的空白期令人费解，更加令人费解的是早期铁器时代孤立于其他地区的、哥特兰岛与波罗的海对岸的船形墓葬。
+然而，如果我们不局限于墓葬形式，而将船看作一种象征，加上我们对北欧青铜时代宗教的了解，这两处发现就并非完全孤证不立。
+
+我们对北欧青铜时代宗教的认识，主要基于当时人们在斯堪的纳维亚山区巨大岩壁上留下的图画和符号。
+这些岩画的内容并非是旧石器时代洞穴壁画那样描绘动物和狩猎场景的写实素描，而是在同一岩壁上以及相距甚远的各地反复出现的、象征性的人物和群体。
+它们的描绘方式虽然几何化且程式化，但往往生动而富有表现力。
+常用的图案包括车轮、脚底、蛇、犁、斧头和船，而人物则与这些图案组合在一起，构成游行队伍、婚礼场景和战斗场面，或描绘人物跳舞、跳跃、骑马或战斗的场景。
+关于这些岩画的意图，人们进行了诸多讨论，现在普遍认为它们具有宗教和仪式意义。
+阿尔姆格伦[^25-1|\*]通过对照世界其他地区文明的艺术和仪式，提出了令人信服的论证，表明这些岩画描绘的是实际发生的仪式。
+在瑞典岩画附近发现的祭祀火堆和被宰杀动物痕迹也印证了这一点。
+这些图画显然来自一种与太阳崇拜相关的生育宗教，阿尔姆格伦所认为它还可能包含重生的概念。
+重生思想起源于东方，在埃及的艺术和宗教中得到了充分发展，并且似乎在青铜时代向北传播到了斯堪的纳维亚。
+在这一仪式中，船显然扮演着重要的角色，因为它反复出现，有时伴随着轮子和太阳圆盘、树木、蛇、有角动物，有时伴随着跳舞、跳跃或进行祭祀的人群；
+人物有时在船内，有时又与船形成一组，偶尔似乎用手托着船。
+
+在岩石上发现的某些符号，包括船的符号在内，也出现在墓室墙壁、墓碑上，以及墓地周边；尤其是船和斧头，在中欧地区仅见于墓葬中。
+那么，这一宗教最早是否是一种死者崇拜，只是与太阳崇拜和生育信仰相关，而随着发展才最终将重心转向了生者？
+又或者其最早以生育和太阳崇拜为主，后来才包含与死者相关的信仰和习俗，并从自然界的重生原则过渡到人类死后的轮回？
+这一问题一直存在诸多争议，而阿尔姆格伦[^26-1|\*]支持后者。
+他认为一方面，这些符号与墓葬的密切联系虽然能够佐证另一种观点；但另一方面，他也证明了瑞典的岩画并非如某些人所声称的那样，仅出现在墓地附近。
+虽然不足以得出确切的结论，但埃及太阳崇拜的发展，以及埃及拥有的比世界上任何其他地方都更为完整的记录，无疑是阿尔姆格伦观点的有力论据。
+
 ::::
 :::::
 
@@ -1388,14 +1382,45 @@ Certain of the symbols found on the rock, and the ship among them, are found als
 
 All that we can learn of Bronze Age ritual and religion is likely to be important for our better understanding of ship-funeral; first because the ship symbol played so important a part in it, and moreover in Central Europe is confined to graves alone; and secondly because in Gotland there are rock-engravings near the ship-form graves, which may go some way to explain their mysterious origin there. No doubt there is also a link with the boat-offerings recovered from bogs, dating from the Iron Age, and recorded by Caesar as thank offerings for victory.[^26-2|\*] If we knew definitely what was the significance of the ship in the rock-engravings, we should then be more than halfway towards understanding the meaning of the funeral ship. Was it originally the ship of the sun-god, moving across the heavens, as in Egypt? And was it afterwards believed that the dead might travel with the god into another life? Or was it merely a symbol of the sun, and therefore of fertility and rebirth, without any conception of a journey made by the dead within it?
 
-The problem of whether the ship in the grave is based on any real belief in a voyage of the dead is one of the most tantalising of all those presented by Scandinavian funeral customs. There is so much evidence for ship-funeral, and yet nothing that gives us a direct answer. Two other customs found for the most part outside Scandinavia may have a connection with this problem; these are the practice of laying coins in the mouth of the dead, and that of burying wagons in the grave with them. The first was frequent at the time of the Roman Empire, and was taken up by the Teutonic peoples in many parts of Germany. Stjerna[^27-1|\*] laid great emphasis on this, and argued that the custom taken from the Greeks of providing the dead with fares for Charon developed in the North into the more elaborate practice of giving boats to the dead that they might make the journey independently to the other shore. This of course does not take into account the interest in the ship symbol before the Iron Age. On this point the arguments put forward by Ebert[^27-2|\*] are very relevant. He claims that by the time the Germans could have come into contact with the Greeks there would no longer be any vital belief in Charon and his boat to be passed on, since such naive ideas about the next world had been replaced by Asiatic mystery cults and their teaching. Either the coins laid in the mouth of the dead were nothing more than a fashion imitated from the South, or they had some different meaning and might, as Almgren suggests, be intended either as symbols of the possessions of the dead or as protective amulets for them. The other practice is more likely to be significant. Wagons were buried with the dead in Scythian, Thracian and Celtic graves, and probably, like that in the Oseberg ship, were those used to carry the body to the tomb. But when warchariots came to be buried in graves of the La Tine period among the Celts we seem to be faced with a different conception, that of providing the dead with what he will need in the next world. And when we find a gravestone depicting the dead in a chariot leaving the earth, then Ebert claims that we have a new idea coming in, that of the chariot as a means of reaching another world. Wagons are first found in Northern graves in the transition period between the Bronze and Iron Ages, that is at the same time as the ship-form graves first appear in Gotland. It seems possible then that at this period the conception of a death journey may have entered the North, and that the wagon and chariot used by an inland people were naturally replaced by the boat and ship among a people to whom travel meant primarily a journey by sea. This is Almgren's opinion;[^28-1|\*] Ebert is inclined to think that we find traces of the idea earlier still in the coffins of wood, formed from the hollowed-out trunk of a tree, in which the dead were laid in the middle Bronze Age; these were introduced independently of the practice of cremation and at about the same time as the rock-engravings begin, so that there may be a connection between the two.
+The problem of whether the ship in the grave is based on any real belief in a voyage of the dead is one of the most tantalising of all those presented by Scandinavian funeral customs. There is so much evidence for ship-funeral, and yet nothing that gives us a direct answer. Two other customs found for the most part outside Scandinavia may have a connection with this problem; these are the practice of laying coins in the mouth of the dead, and that of burying wagons in the grave with them. The first was frequent at the time of the Roman Empire, and was taken up by the Teutonic peoples in many parts of Germany. Stjerna[^27-1|\*] laid great emphasis on this, and argued that the custom taken from the Greeks of providing the dead with fares for Charon developed in the North into the more elaborate practice of giving boats to the dead that they might make the journey independently to the other shore. This of course does not take into account the interest in the ship symbol before the Iron Age. On this point the arguments put forward by Ebert[^27-2|\*] are very relevant. He claims that by the time the Germans could have come into contact with the Greeks there would no longer be any vital belief in Charon and his boat to be passed on, since such naive ideas about the next world had been replaced by Asiatic mystery cults and their teaching. Either the coins laid in the mouth of the dead were nothing more than a fashion imitated from the South, or they had some different meaning and might, as Almgren suggests, be intended either as symbols of the possessions of the dead or as protective amulets for them. The other practice is more likely to be significant. Wagons were buried with the dead in Scythian, Thracian and Celtic graves, and probably, like that in the Oseberg ship, were those used to carry the body to the tomb. But when warchariots came to be buried in graves of the La Tène period among the Celts we seem to be faced with a different conception, that of providing the dead with what he will need in the next world. And when we find a gravestone depicting the dead in a chariot leaving the earth, then Ebert claims that we have a new idea coming in, that of the chariot as a means of reaching another world. Wagons are first found in Northern graves in the transition period between the Bronze and Iron Ages, that is at the same time as the ship-form graves first appear in Gotland. It seems possible then that at this period the conception of a death journey may have entered the North, and that the wagon and chariot used by an inland people were naturally replaced by the boat and ship among a people to whom travel meant primarily a journey by sea. This is Almgren's opinion;[^28-1|\*] Ebert is inclined to think that we find traces of the idea earlier still in the coffins of wood, formed from the hollowed-out trunk of a tree, in which the dead were laid in the middle Bronze Age; these were introduced independently of the practice of cremation and at about the same time as the rock-engravings begin, so that there may be a connection between the two.
 
 [^26-2]: Almgren, *Nordische Felszeichnungen als religiöse Urkunden*. p. 64; Caesar, *De Bello Gallico*, VI, 17. An example such a sacrifice is the discovery at Hjortspring (Nordiske Fortidsminder, III, I, 1937), dated between the fourth and second centuries B.C. Many animal bones and weapons were found lying about a large ship, clearly an offering of some kind.
 [^27-1]: Sterna, *Essays on Beowulf* (Viking Club, Coventry, 1912), p. mom C
 [^27-2]: Ebert, <q>Die Bootfahrt ins Jenseits</q>, *Praehist. Zeit*. 1919, XI-XII, p. 179 f.
+[^28-1]: Almgren, *op. cit.* p. 395.
 
 ::::
 ::::translation{lang=zh-CN}
+
+我们对青铜时代仪式和宗教的了解，对于更好地理解船葬习俗至关重要：
+首先，船的符号扮演着重要的角色，而且在中欧，这些符号仅出现在墓葬中；
+其次，哥特兰岛船形墓葬附近发现的岩刻，或许能解释船形墓葬神秘的起源。
+毫无疑问，船葬习俗也与从沼泽中发现的铁器时代船形祭品有关，凯撒曾将其记录为庆祝胜利的感恩祭品[^26-2cn|\*]。
+如果我们能够明确知道岩刻中船的象征意义，就能更好地理解葬船的含义。
+它最初是否像埃及那样，是太阳神在天空中航行的船只？而是不是之后人们才开始相信死者可以跟随神灵进入来世？
+或者，它是否仅仅象征太阳、生育和重生而已，而与死者乘船旅行没有任何关联？
+
+墓葬中的船是否源自对死者航行的真实信仰，是斯堪的纳维亚丧葬习俗中最引人入胜的问题之一。
+船葬证据虽多，但无法给这一问题提供直接答案。
+另外两种主要在斯堪的纳维亚以外地区发现的习俗或许与此有关：一种是将硬币放入死者口中，另一种是将马车同死者随葬。
+前者在罗马帝国时期十分常见，在日耳曼许多地区被<u>条顿</u>民族沿用。
+斯蒂尔纳[^27-1|\*]对此极为重视，他认为，希腊人传来的为死者提供前往冥河<u>卡戎</u>的船票的习俗，在北方发展成为更为复杂的做法，即为死者提供船只，让他们能够独立前往彼岸。
+当然，这并未考虑到铁器时代之前，人们就已经十分重视船只的符号。
+对此，埃伯特[^27-2|\*]提出的论点非常关键。
+他认为，当日耳曼人有可能与希腊人接触时，关于卡戎及其船只的信仰早已不复存在，因为这种关于来世的简单观念已被亚洲的密教及其教义所取代。
+放在死者口中的硬币，要么仅仅是效仿南方的一种习俗，要么具有其他的含义；阿尔姆格伦提出，它们可能是死者财产的象征，或是护身符。
+而另一边随葬马车的习俗，或许更加重要。
+在<u>斯基泰人</u>、<u>色雷斯人</u>和凯尔特人的墓葬中，马车与死者一同下葬。
+它们很可能就像奥塞贝格船葬中的马车一样，是用来将遗体运送到墓穴的。
+但当战车出现在拉坦诺时期凯尔特人的墓葬中时，它似乎承载着不同的意义，即为死者提供来世所需的物品。
+而此后墓碑开始出现描绘死者乘坐战车离开尘世的画面，埃伯特认为，这表明一种新的观念正在形成，即战车是通往另一个世界的交通工具。
+马车最早出现在青铜-铁器时代过渡期的北方墓葬中，这与哥特兰岛首次出现船形墓葬的时间大致吻合。
+因此，死亡之旅的概念可能正是在这一时期传入北方，而内陆民族使用的马车和战车，到了以海路为主要出行方式的民族这里，就自然而然地被船只所取代。
+这是阿尔姆格伦的观点[^28-1|\*] ，而埃伯特倾向于认为，更早的青铜时代中期，用掏空树干制成的木棺中也可以找到这种思想的痕迹；
+这些木棺的出现与火葬习俗无关，并且大约与岩画同时出现，因此两者之间或许存在联系。
+
+[^26-2cn]: <span lang="en-GB">Almgren, *Nordische Felszeichnungen als religiöse Urkunden*. p. 64; Caesar, *De Bello Gallico*, VI, 17. 251.</span>
+此类祭祀的一个例子是在<u>约特斯普林</u>出土的大船（<span lang="en-GB">*Nordiske Fortidsminder*, III, I, 1937</span>），其年代可追溯至公元前四至前二世纪，上面发现了许多动物骨骼和武器，显然是一种祭祀。
 
 ::::
 :::::
@@ -1405,18 +1430,37 @@ The problem of whether the ship in the grave is based on any real belief in a vo
 
 But even if we decide that the conception of a journey made by the dead came in some time during the Bronze Age from the south of Europe, this does not necessarily mean that the ship-funerals which began in the sixth and seventh centuries were inspired by the same belief. The orientation of the graves rather suggests, it is true, that the second introduction of the ship was not unconnected with the first,[^28-2|\*] for, just as in the Gotland graves the dead lie with head to the north and feet to the south, so the same is true of the earliest of the Norwegian boat-graves. But the gap in time is enormous, and the evidence for the conception of a journey to another world behind the Northern boat graves of the Migration period and the Viking Age is hard to establish. Lindqvist[^28-3|\*] believes that the introduction of the ship in the grave arose out of the desire to provide the dead with as complete an equipment as possible, influenced partly by the example of Merovingian funeral rites on the continent. He instances the stones weighing down the Oseberg ship in its mound, and the mooring of it to the great stone with a rope. The burial chamber is another argument against any belief in a journey taken by the dead; we have a good many examples of it in Scandinavia, and in one grave from Karmø in Norway the timbered grave chamber was not even in the Ship, but had its roof resting on two parallel stone walls built outside it. On the other hand, it is well to remember that some of the oars in the Oseberg ship were laid in position as though waiting for the rowers.
 
-It may prove misleading to concentrate too much on the most elaborate graves; it is the amazing popularity of the custom among all sections of the people that is perhaps the most impressive feature, and this can hardly be explained by changing fashions at court. Moreover Ebert's survey of the evidence for ship-funeral brought him to a different conclusion from that of Lindqvist.[^29-1|\*] The ships and the gravestones with ships depicted on them which precede the burials in Scandinavia, and the incomplete models of ships and ship-forms in stone which seem to mark the decadence of the custom late in the Viking Age, give the impression that a clear development can, be traced,[^29-2|\*] and that the symbolism of the ship in the graves of the late heathen period was something more important than the mere desire to. give the dead all that he had enjoyed in life for his sojourn in the grave.
+It may prove misleading to concentrate too much on the most elaborate graves; it is the amazing popularity of the custom among all sections of the people that is perhaps the most impressive feature, and this can hardly be explained by changing fashions at court. Moreover Ebert's survey of the evidence for ship-funeral brought him to a different conclusion from that of Lindqvist.[^29-1|\*] The ships and the gravestones with ships depicted on them which precede the burials in Scandinavia, and the incomplete models of ships and ship-forms in stone which seem to mark the decadence of the custom late in the Viking Age, give the impression that a clear development can, be traced,[^29-2|\*] and that the symbolism of the ship in the graves of the late heathen period was something more important than the mere desire to give the dead all that he had enjoyed in life for his sojourn in the grave.
 
 But although our knowledge of religion in the Bronze Age in the North is confined to the inarticulate carvings on the rocks and to grave-goods buried in the earth, the late heathen period has left other records to which we may turn. Before attempting to draw any conclusions from the archaeological evidence regarding the dead, we must see what ideas concerning them are left in the literature of the North which preserves memories of heathen times.
 
-[^28-1]: Almgren, *op. cit.* p. 395.
-[^28-2]: *Ibid.* p. 201.
+[^28-2]: Almgren, *op. cit.* p. 201.
 [^28-3]: Lindqvist, *Fornvännen*, 1921, p. 175.
 [^29-1]: Ebert, *Praehist. Zeit.*, op. cit.
 [^29-2]: Almgren, <q>Vikingatidens grafskick...</q> (Nordiska Studier til. A. Noreen, Uppsala, 1904), p. 317, quotes an interesting example of transition: the shape of a boat formed by upright stone slabs inside a howe, containing burned bones, weapons, and rivets, the last presumably from a burned boat, in a grave at Ølbør near Stavanger.
 
 ::::
 ::::translation{lang=zh-CN}
+
+但即使我们认定死者会踏上旅程的观念起源于青铜时代南欧，但这并不一定意味着始于六七世纪的船葬习俗也来自同样的信仰。
+墓葬的朝向确实表明，船葬习俗的第二次出现与第一次并非毫无关联[^28-2|\*]：正如哥特兰岛的墓葬一样，挪威最早的船葬墓葬中的死者亦头朝北、脚朝南。
+然而，这期间时间跨度巨大，很难找到证据证明，民族大迁徙时期和维京时代的北欧船葬墓葬背后存在着来世之旅的观念。
+林德奎斯特[^28-3|\*]认为，船葬的出现，是源于尽可能为死者备全陪葬品的欲望，并在一定程度上受到了欧洲大陆墨洛温王朝葬礼习俗的影响。
+对于死亡之旅的假设，他举出例子反对，比如压在奥塞贝格葬船上的石头，和将其系在巨石上的绳索。
+区别船体单独存在的墓室也反驳了这一假设，斯堪的纳维亚半岛有许多这样的例子；挪威<u>卡尔默</u>的一座墓穴中，木质墓室甚至不在船只内部，其屋顶反而架设在船体外部的两堵平行石墙上。
+然而，我们也不能忽视，奥塞贝格船形墓葬中的一些船桨的摆放方式，似乎是在等待划桨者的出现。
+
+或许，过分关注那些最精美的墓葬，其实具有误导性。
+因为这种习俗最突出的特点，乃是其在各个阶层民众中的广泛流行，而这点很难用宫廷风尚的变迁来解释。
+此外，埃伯特对船葬证据的调查得出了有别于林德奎斯特的结论[^29-1|\*]。
+船只和刻有船只图案的墓碑，是早于这些斯堪的纳维亚的墓葬出现的。
+而维京时代晚期出现不完整的船只模型和船形石雕，似乎标志着这种习俗衰落，也给人一种印象⸺我们或许能从中找到这种习俗发展的清晰脉络[^29-2cn|\*]，而船只在异教晚期墓葬中的象征意义，也远不止于让死者在死后也能享生福。
+
+虽然我们对青铜时代北方宗教的了解仅限于岩石上不明意义的雕刻和埋在土中的陪葬品，但晚期异教时期也留下了其他可供参考的记录。
+在试图从考古证据中得出任何关于死者的结论之前，我们还必须先了解北欧文献中遗留的相关思想，这些文献保存了对异教时代的记忆。
+
+[^29-2cn]: <span lang="en-GB">Almgren, <q>Vikingatidens grafskick...</q> (Nordiska Studier til. A. Noreen, Uppsala, 1904), p. 317</span>
+对于这种习俗的过渡引用了一个有趣的例子：在<u>斯塔万格</u>附近的<u>厄尔伯尔</u>的一个墓葬，其石室中有由竖立的石板组成的船形，里面有烧焦的骨头、武器和铆钉，铆钉据推测来自一艘烧毁的船。
 
 ::::
 :::::
