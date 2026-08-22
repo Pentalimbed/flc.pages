@@ -1,13 +1,74 @@
 ---
 interface Props {
   popupId?: string;
+  scriptOnly?: boolean;
 }
 
-const { popupId } = Astro.props;
+const { popupId, scriptOnly = false } = Astro.props;
 const noteId = popupId ?? `note-${crypto.randomUUID()}`;
 ---
 
-<span class="note" tabindex="0" aria-describedby={noteId}><slot /></span>
+{!scriptOnly && <span class="note" tabindex="0" aria-describedby={noteId}><slot /></span>}
+
+<style is:global>
+  .post-content .note {
+    position: relative;
+    cursor: help;
+    color: plum;
+    text-autospace: no-autospace;
+  }
+
+  .post-content .note-popup {
+    position: fixed;
+    z-index: 1000;
+    inset: 0 auto auto 0;
+    width: max-content;
+    max-width: min(24rem, calc(100vw - 2rem), var(--note-popup-max-width, calc(100vw - 2rem)));
+    max-height: var(--note-popup-max-height, calc(100vh - 2rem));
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem;
+    text-indent: 0;
+    overflow: hidden auto;
+    overflow-wrap: anywhere;
+    color: var(--color-whitish);
+    background: var(--color-blackish);
+    border: 1px solid var(--color-dimmed);
+    box-shadow: 0 0.25rem 0.75rem oklch(0 0 0 / 30%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 120ms ease, visibility 0s linear 120ms;
+  }
+
+  .post-content .note-popup :is(p, .note-paragraph) {
+    display: block;
+    margin-block: 0;
+    text-indent: 0;
+  }
+
+  .post-content .note-table {
+    display: table;
+    margin-block-start: 0.5rem;
+    border-collapse: collapse;
+  }
+
+  .post-content .note-table-row { display: table-row; }
+
+  .post-content .note-table-cell {
+    display: table-cell;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--color-whitish);
+  }
+
+  .post-content .note-table-cell[role="columnheader"] { font-weight: 600; }
+
+  .post-content .note:hover .note-popup,
+  .post-content .note:focus-visible .note-popup {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+</style>
 
 <script>
   const popupGutter = 8;

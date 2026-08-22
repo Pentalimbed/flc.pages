@@ -5,6 +5,7 @@ import "@styles/blogs.css";
 import BaseFonts from "@components/base-fonts.astro";
 import Caret from "@components/caret.html";
 import LinkStack from "@components/link-stack.astro";
+import Note from "@components/note.astro";
 
 import type { MarkdownLayoutProps } from "astro";
 
@@ -70,6 +71,8 @@ const date = new Date(Date.parse(frontmatter.date));
         <main class="w-full">
           <slot />
         </main>
+
+        <Note scriptOnly />
 
         <hr class="border-4" />
         <hr class="border-2" />

@@ -55,12 +55,22 @@ function popupContent(content) {
 }
 
 function noteNode(display, content, popupId, language) {
+  // Keep this as a native inline element: an Astro component boundary can
+  // preserve whitespace next to the rendered note in prose.
   return {
     type: "mdxJsxTextElement",
-    name: "Note",
+    name: "span",
     attributes: [{
       type: "mdxJsxAttribute",
-      name: "popupId",
+      name: "class",
+      value: "note",
+    }, {
+      type: "mdxJsxAttribute",
+      name: "tabindex",
+      value: "0",
+    }, {
+      type: "mdxJsxAttribute",
+      name: "aria-describedby",
       value: popupId,
     }],
     children: [

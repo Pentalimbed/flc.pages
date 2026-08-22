@@ -5,8 +5,7 @@ hr {
 }
 
 /* Base typography for every disciplined post region. */
-.post-content,
-.post-content .note-popup {
+.post-content {
   font-family: var(--font-newsreader), serif;
   font-size: 14pt;
   line-height: 1.5;
@@ -143,79 +142,17 @@ hr {
   }
 }
 
-/* Inline note trigger and viewport-constrained popup. */
-.post-content .note {
-  position: relative;
-  cursor: help;
-  color: dodgerblue;
-}
 
-.post-content .note-popup {
-  position: fixed;
-  z-index: 1000;
-  inset: 0 auto auto 0;
-  width: max-content;
-  max-width: min(
-    24rem,
-    calc(100vw - 2rem),
-    var(--note-popup-max-width, calc(100vw - 2rem))
-  );
-  max-height: var(--note-popup-max-height, calc(100vh - 2rem));
-  box-sizing: border-box;
-  padding: 0.5rem 0.75rem;
-  text-indent: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overflow-wrap: anywhere;
-  color: var(--color-whitish);
-  background: var(--color-blackish);
-  border: 1px solid var(--color-dimmed);
-  box-shadow: 0 0.25rem 0.75rem oklch(0 0 0 / 30%);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 120ms ease, visibility 0s linear 120ms;
-}
-
-.post-content .note-popup :is(p, .note-paragraph) {
-  display: block;
-  margin-block: 0;
-  text-indent: 0;
-}
-
-.post-content .note-table {
-  display: table;
-  margin-block-start: 0.5rem;
-  border-collapse: collapse;
-}
-
-.post-content .note-table-row {
-  display: table-row;
-}
-
-.post-content .note-table-cell {
-  display: table-cell;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid var(--color-whitish);
-}
-
-.post-content .note-table-cell[role="columnheader"] {
-  font-weight: 600;
+.post-content q:lang(en-GB) {
+  quotes: "‘" "’" "“" "”";
 }
 
 .post-content .note-popup:lang(en) {
   quotes: auto;
 }
 
-.post-content .note:hover .note-popup,
-.post-content .note:focus-visible .note-popup {
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0s;
-}
-
 /* Chinese post typesetting. */
-:is(.post-content, .post-content .note-popup):lang(zh-CN) {
+:is(.post-content, .post-content):lang(zh-CN) {
   font-family: var(--font-newsreader), "WenYuan Serif SC VF", serif;
   font-size: 13pt;
   text-align: justify;
@@ -227,7 +164,6 @@ hr {
   hanging-punctuation: first allow-end last;
   text-autospace: normal;
   text-spacing-trim: normal;
-  quotes: "「" "」" "『" "』";
 }
 
 .post-content p:lang(zh-CN) {
@@ -240,7 +176,11 @@ hr {
   font-family: var(--font-playfair), "WenYuan Serif SC VF", serif;
 }
 
-.post-content :is(i, blockquote):lang(zh-CN) {
+.post-content q:lang(zh-CN) {
+  quotes: "「" "」" "『" "』";
+}
+
+.post-content :is(i, cite, blockquote):lang(zh-CN) {
   font-family: "AR PL UKai CN", serif;
 }
 
@@ -263,9 +203,4 @@ hr {
   text-justify: auto;
   ruby-align: space-between;
   font-size: 60%;
-}
-
-/* Popup paragraphs should remain flush-left even in Chinese post regions. */
-.post-content .note-popup :is(p, .note-paragraph) {
-  text-indent: 0;
 }
